@@ -23,7 +23,7 @@ const divStyle = {
 export class Calculator extends React.Component<Props> {
     render(){
         return (
-            <div style={calculatorStyle}> 
+            <div style={calculatorStyle}>
                 <div style = {divStyle}>This is a simple calculator</div>
                 <InputHolder
                     actions = {this.props.actions}
