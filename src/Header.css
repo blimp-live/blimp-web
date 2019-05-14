@@ -1,0 +1,38 @@
+.header {
+  height: 20%;
+  width:100%;
+  position:relative;
+}
+
+div div div .button{
+  background-color: #2196F3;
+  color:white;
+}
+
+div div div .save-button {
+  position:absolute;
+  display:inline;
+  float:right;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 1%;
+}
+
+div div div .redo-button {
+  display:inline;
+  bottom: 0;
+  margin: 0 0 1% 1%;
+}
+
+div div div .undo-button {
+  display:inline;
+  bottom: 0;
+  margin: 0 0 1% 1%;
+}
+
+.redo-undo-div {
+  margin: 0 0 1% 1%;
+  bottom: 0;
+  position:absolute;
+  display:inline-flex;
+}

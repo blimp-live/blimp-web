@@ -1,6 +1,16 @@
+
 // Libraries
 import * as React from 'react'
 import { Route, Switch, Link } from 'react-router-dom'
+import Dashboard from './Dashboard';
+import Header from './Header';
+import WidgetList from './WidgetList';
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import Paper from '@material-ui/core/Paper';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
 
 // Pages
 import Calculator from './containers/calculator'
@@ -12,14 +22,16 @@ import DeveloperPage from './containers/developer-page'
 
 export const App = (): JSX.Element => {
   return (
-    <React.Fragment>
-      <Route exact path="/" component={MarketingPage} />
-      <Route exact path="/calculator-example/" component={Calculator} />
-      <Route exact path="/widget-list/" component={ WidgetList } />
-      <Route exact path="/:username/:dashboardName" component={DashboardView} />
-      <Route exact path="/:username/:dashboardName/edit" component={DashboardEdit} />
-      <Route exact path="/developer" component={DeveloperPage} />
-    </React.Fragment>
-  )
+    <div>
+      <div className='dashboard-container'>
+          <Header></Header>
+          <Dashboard></Dashboard>
+      </div>
+      <div className='widgetlist-container'>
+        <WidgetList></WidgetList>
+      </div>
+    </div>
+  );
 }
-export default App
+
+export default App;
