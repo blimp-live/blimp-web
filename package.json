@@ -6,6 +6,7 @@
     "@babel/plugin-transform-member-expression-literals": "^7.2.0",
     "@babel/plugin-transform-named-capturing-groups-regex": "^7.4.4",
     "@material-ui/core": "^3.9.3",
+    "babel": "^6.23.0",
     "core-js": "^3.0.1",
     "core-js-compat": "^3.0.1",
     "react": "^16.7.0",
