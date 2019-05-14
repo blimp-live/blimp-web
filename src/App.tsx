@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Button from '@material-ui/core/Button';
 
 const App: React.FC = () => {
   return (
@@ -16,11 +17,22 @@ const App: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
+        <EnterButton></EnterButton>
           HELLO WORLD
         </a>
       </header>
     </div>
   );
 }
+
+const EnterButton = () => (
+  <div>
+    <Button type="submit" className="button" >
+      Test
+    </Button>
+    <br />
+    <br />
+  </div>
+);
 
 export default App;
