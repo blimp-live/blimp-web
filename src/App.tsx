@@ -1,38 +1,25 @@
+import Dashboard from './Dashboard';
+import Header from './Header';
+import WidgetList from './WidgetList';
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Paper from '@material-ui/core/Paper';
+import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        <EnterButton></EnterButton>
-          HELLO WORLD
-        </a>
-      </header>
+    <div>
+      <div className='dashboard-container'>
+          <Header></Header>
+          <Dashboard></Dashboard>
+      </div>
+      <div className='widgetlist-container'>
+        <WidgetList></WidgetList>
+      </div>
     </div>
   );
 }
-
-const EnterButton = () => (
-  <div>
-    <Button type="submit" className="button" >
-      Test
-    </Button>
-    <br />
-    <br />
-  </div>
-);
 
 export default App;

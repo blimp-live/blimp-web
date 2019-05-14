@@ -23,6 +23,23 @@
   color: #61dafb;
 }
 
+.dashboard-container {
+  position:fixed;
+  bottom: 0;
+  /* margin:10px; */
+  width:80%;
+  height:100%;
+  display: inline-flex;
+}
+
+.widgetlist-container{
+  width:20%;
+  height:100%;
+  float:right;
+  display:inline-flex;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
