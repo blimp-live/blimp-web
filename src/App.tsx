@@ -1,38 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Button from '@material-ui/core/Button';
+// Libraries
+import * as React from 'react'
+import { Route, Switch, Link } from 'react-router-dom'
 
-const App: React.FC = () => {
+// Pages
+import Calculator from './containers/calculator'
+import { DashboardEdit } from './containers/dashboard-edit'
+import { DashboardView } from './containers/dashboard-view'
+import { MarketingPage } from './containers/marketing-page'
+
+export const App = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        <EnterButton></EnterButton>
-          HELLO WORLD
-        </a>
-      </header>
-    </div>
-  );
+    <React.Fragment>
+      <Route exact path="/" component={MarketingPage} />
+      <Route exact path="/calculator-example/" component={Calculator} />
+      <Route exact path="/:username/:dashboardName" component={DashboardView} />
+      <Route exact path="/:username/:dashboardName/edit" component={DashboardEdit} />
+    </React.Fragment>
+  )
 }
-
-const EnterButton = () => (
-  <div>
-    <Button type="submit" className="button" >
-      Test
-    </Button>
-    <br />
-    <br />
-  </div>
-);
-
-export default App;
+export default App
