@@ -9,10 +9,12 @@ export const history = createHistory();
 export const routerMiddleware = createRouterMiddleware(history);
 
 export function configureStore(initialState?: RootState) {
+  const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
   // configure middlewares
   const middlewares = [routerMiddleware];
   // compose enhancers
-  const enhancer = compose(applyMiddleware(...middlewares));
+  const enhancer = composeEnhancers(applyMiddleware(...middlewares));
   // create store
   return createStore(rootReducer, initialState!, enhancer);
 }
