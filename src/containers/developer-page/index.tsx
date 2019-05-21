@@ -2,13 +2,14 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState, rootReducer } from "../../reducers";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import * as dashboardActions from "../../actions/dashboardActions";
 
 interface Props {
   actions: any;
 }
 
-export class MarketingPage extends React.Component<Props> {
+export class DeveloperPage extends React.Component<Props> {
   render(){
     return (
       <div>
@@ -28,16 +29,19 @@ export class MarketingPage extends React.Component<Props> {
             </li>
           </ul>
         </nav>
-        <h1>Welcome Home!</h1>
+        <h1>Developer</h1>
+        <button onClick={() => this.props.actions.createDashboard('Stanley Huang', 69)}>Hello</button>
       </div>
     );
   }
 }
 
-const actions: any = Object.assign({}, null);
+const actions: any = Object.assign({}, dashboardActions);
 
 function mapStateToProps(state: RootState) {
-  return {};
+  return {
+    calculatorState: state.calculatorReducer
+  };
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
@@ -48,4 +52,4 @@ function mapDispatchToProps(dispatch: Dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MarketingPage);
+)(DeveloperPage);

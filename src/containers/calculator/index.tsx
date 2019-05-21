@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import * as calculatorActions from "../../actions/calculatorActions";
+import * as dashboardActions from "../../actions/dashboardActions";
 import { RootState, rootReducer } from "../../reducers";
 import { CalculatorModel } from "../../interfaces/calculatorModels";
 import InputHolder from '../../components/inputHolder'
@@ -37,7 +37,7 @@ export class Calculator extends React.Component<Props> {
     }
 }
 
-const actions: any = Object.assign({}, calculatorActions);
+const actions: any = Object.assign({}, dashboardActions);
 
 function mapStateToProps(state: RootState) {
   return {
