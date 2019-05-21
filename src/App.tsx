@@ -7,6 +7,7 @@ import Calculator from './containers/calculator'
 import { DashboardEdit } from './containers/dashboard-edit'
 import { DashboardView } from './containers/dashboard-view'
 import { MarketingPage } from './containers/marketing-page'
+import DeveloperPage from './containers/developer-page'
 
 export const App = (): JSX.Element => {
   return (
@@ -15,6 +16,7 @@ export const App = (): JSX.Element => {
       <Route exact path="/calculator-example/" component={Calculator} />
       <Route exact path="/:username/:dashboardName" component={DashboardView} />
       <Route exact path="/:username/:dashboardName/edit" component={DashboardEdit} />
+      <Route exact path="/developer" component={DeveloperPage} />
     </React.Fragment>
   )
 }

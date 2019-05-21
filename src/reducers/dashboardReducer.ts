@@ -34,12 +34,12 @@ const initialState: State = {
 
 export const dashboardReducer = handleActions<State, DashboardModel>(
   {
-    [DashboardActions.Type.GET_DASHBOARD]: (
-      state: State
-    ) => ({
-      isFetching: true,
-      ...state
-    })
+    // [DashboardActions.GET_DASHBOARD]: (
+    //   state: State
+    // ) => ({
+    //   isFetching: true,
+    //   ...state
+    // })
   },
   initialState
 );
