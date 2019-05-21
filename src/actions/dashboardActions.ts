@@ -1,25 +1,54 @@
 import { createAction } from 'redux-actions';
 import { DashboardModel } from '../interfaces/dashboardModel';
 
-const root = 'localhost:8000'
+const root = 'http://localhost:8000'
+const sampleDashboard = {
+  id: 102,
+  name: 'Stanleys Dashboard',
+  contents: "hi",
+  createdAt: 1558475608,
+  lastSaved: 1558475608,
+  public: true,
+  url: 'bhavika-sharma'
+}
 
-export const GET_DASHBOARD = "GET_DASHBOARD"
-export const CREATE_DASHBOARD = "CREATE_DASHBOARD"
+export const FETCHING_DASHBOARD = "FETCHING_DASHBOARD"
+export const SET_DASHBOARD = "SET_DASHBOARD"
 
-export function getDashboard(id: number) {
+export function fetchingDashboard() {
   return {
-    type: GET_DASHBOARD,
-    id
+    type: FETCHING_DASHBOARD,
+  }
+}
+
+export function setDashboard(contents: DashboardModel) {
+  return {
+    type: SET_DASHBOARD,
+    payload: {
+      contents
+    }
   }
 }
 
 export function createDashboard(name: String, userId: number) {
-  fetch(`/dashboard`, {
-    method: 'POST',
-  }).then(
-    (response: any) => response.json()
-  ).then((contents: DashboardModel) => console.log(contents))
-  return {
-    type: CREATE_DASHBOARD
+  return (dispatch: any) => {
+    dispatch(fetchingDashboard());
+
+    fetch(`${root}/dashboard`, {
+      method: 'POST',
+      body: JSON.stringify({
+        name,
+        userId
+      })
+    }).then(
+      (response: any) => response.json()
+    ).then(
+      (contents: any) => dispatch(setDashboard(contents.data))
+    ).catch(
+      (err: any) => {
+        console.error(`NETWORK ERROR: ${err.message}`)
+        dispatch(setDashboard(sampleDashboard))
+      }
+    )
   }
 }

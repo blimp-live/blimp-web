@@ -1,24 +1,11 @@
-import { handleActions } from 'redux-actions';
-
 import { DashboardModel } from '../interfaces/dashboardModel';
 
-export type State = {
-  readonly id: number;
-  readonly name: String;
-  readonly contents: String;
-  readonly createdAt: number;
-  readonly lastSaved: number;
-  readonly public: boolean;
-  readonly url: String;
-  readonly contentHistory?: String[];
-  readonly isFetching?: boolean;
-  readonly isSaving?: boolean;
-  readonly unsavedChanges?: boolean;
-}
+import {
+  FETCHING_DASHBOARD,
+  SET_DASHBOARD,
+} from '../actions/dashboardActions';
 
-import * as DashboardActions from '../actions/dashboardActions';
-
-const initialState: State = {
+const initialState: DashboardModel = {
   id: -1,
   name: '',
   contentHistory: [],
@@ -32,14 +19,23 @@ const initialState: State = {
   url: ''
 }
 
-export const dashboardReducer = handleActions<State, DashboardModel>(
-  {
-    // [DashboardActions.GET_DASHBOARD]: (
-    //   state: State
-    // ) => ({
-    //   isFetching: true,
-    //   ...state
-    // })
-  },
-  initialState
-);
+export function dashboardReducer(
+  state = initialState,
+  action: any
+ ): DashboardModel {
+  switch(action.type) {
+    case FETCHING_DASHBOARD:
+      return {
+        ...state,
+        isFetching: true,
+      }
+    case SET_DASHBOARD:
+      return {
+        ...state,
+        ...action.payload.contents,
+        isFetching: false,
+      }
+    default:
+      return state
+  }
+}

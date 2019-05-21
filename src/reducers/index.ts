@@ -10,7 +10,6 @@ import { CalculatorModel } from "../interfaces/calculatorModels";
 
 import {
   dashboardReducer,
-  State as DashboardState
 } from './dashboardReducer';
 
 import { DashboardModel } from '../interfaces/dashboardModel';
@@ -20,7 +19,7 @@ interface StoreEnhancerState {}
 export interface RootState extends StoreEnhancerState {
   router: RouterState;
   calculatorReducer: CalculatorState;
-  dashboardReducer: DashboardState;
+  dashboardReducer: DashboardModel;
 }
 export const rootReducer = combineReducers<RootState>({
   router,
