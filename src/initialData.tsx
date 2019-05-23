@@ -5,13 +5,13 @@ const initialData = {
     'widget-3': { id: 'widget-3', content: 'schedule widget' },
   },
   sections: {
-    'section-1': {
-      id: 'section-1',
-      title: 'Section 1',
+    'dashboard': {
+      id: 'dashboard',
+      title: 'Dashboard',
       widgetIds: ['widget-1', 'widget-2', 'widget-3'],
     },
-    'section-2': {
-      id: 'section-2',
+    'widgetList': {
+      id: 'widgetList',
       title: 'Widget List',
       widgetIds: [],
     },

@@ -1,13 +1,13 @@
 import React from 'react';
 import Widget from './Widget'
 import { Droppable } from 'react-beautiful-dnd';
-import './Section.css';
+import './WidgetListSection.css';
 
-export default class Section extends React.Component {
+export default class WidgetListSection extends React.Component {
   render () {
     return (
       // @ts-ignore
-      <div className='container'>
+      <div className='widget-list-container'>
         <h3 className='title'>
           {
             // @ts-ignore
