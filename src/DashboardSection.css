@@ -1,0 +1,22 @@
+.dashboard-container {
+  margin: 8px;
+  border: 1px solid blue;
+  border-radius: 2px;
+}
+
+h3.title {
+  padding: 8px;
+}
+
+.dashboard {
+  height:100%;
+  width:100%;
+  bottom:0;
+}
+
+.dashboard-div {
+  height:79%;
+  width:79%;
+  bottom:0;
+  margin:0 0 1% 1%;
+}

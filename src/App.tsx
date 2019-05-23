@@ -2,7 +2,8 @@ import React from 'react';
 import initialData from './initialData';
 import '@atlaskit/css-reset';
 import { DragDropContext } from 'react-beautiful-dnd';
-import Section from './Section';
+import DashboardSection from './DashboardSection';
+import WidgetListSection from './WidgetListSection';
 
 class App extends React.Component {
 
@@ -71,22 +72,27 @@ class App extends React.Component {
         },
       };
     this.setState(newState);
-    
+
   }
 
   render() {
+    // @ts-ignore
+    const dashboardSection = this.state.sections['dashboard'];
+    // @ts-ignore
+    const widgetListSection = this.state.sections['widgetList'];
+     // @ts-ignore
+    const dashboardWidgets = dashboardSection.widgetIds.map(widgetId => this.state.widgets[widgetId]);
+     // @ts-ignore
+    const widgetListWidgets = widgetListSection.widgetIds.map(widgetId => this.state.widgets[widgetId]);
+    // @ts-ignore
+    const section1 = <DashboardSection key='dashboard' section={dashboardSection} widgets={dashboardWidgets} />;
+    // @ts-ignore
+    const section2 = <WidgetListSection key='widgetList' section={widgetListSection} widgets={widgetListWidgets} />;
+
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div className="container">
-          {this.state.sectionOrder.map(sectionId => {
-            // @ts-ignore
-            const section = this.state.sections[sectionId];
-            // @ts-ignore
-            const widgets = section.widgetIds.map(widgetId => this.state.widgets[widgetId]);
-            // @ts-ignore
-            return <Section key={section.id} section={section} widgets={widgets} />;
-          })}
-        </div>
+        {section1}
+        {section2}
       </DragDropContext>
     );
   }
