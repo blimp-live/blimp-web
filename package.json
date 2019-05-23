@@ -28,6 +28,22 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/react-router-redux": "^5.0.17",
     "@types/redux-actions": "^2.3.1"
+    "@atlaskit/css-reset": "^4.0.1",
+    "@material-ui/core": "^3.9.3",
+    "@types/jest": "24.0.12",
+    "@types/node": "12.0.0",
+    "@types/react": "16.7.18",
+    "@types/react-beautiful-dnd": "^11.0.2",
+    "@types/react-dom": "16.8.4",
+    "@types/styled-components": "^4.1.15",
+    "react": "^16.8.6",
+    "react-beautiful-dnd": "^11.0.3",
+    "react-dnd": "^7.4.5",
+    "react-dnd-html5-backend": "^7.4.4",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
+    "styled-components": "^4.2.0",
+    "typescript": "3.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
