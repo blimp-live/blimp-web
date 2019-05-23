@@ -10,8 +10,13 @@ const initialData = {
       title: 'Section 1',
       widgetIds: ['widget-1', 'widget-2', 'widget-3'],
     },
+    'section-2': {
+      id: 'section-2',
+      title: 'Widget List',
+      widgetIds: [],
+    },
   },
-  sectionOrder: ['section-1'],
+  sectionOrder: ['section-1', 'section-2'],
 };
 
 export default initialData;
