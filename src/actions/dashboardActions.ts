@@ -30,6 +30,11 @@ export function setDashboard(contents: DashboardModel) {
   }
 }
 
+export function saveDashboard(name: String, userId: number, contents: DashboardModel) {
+  // This is making a post request to the api?
+
+}
+
 export function createDashboard(name: String, userId: number) {
   return (dispatch: any) => {
     dispatch(fetchingDashboard());
