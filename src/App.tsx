@@ -8,9 +8,20 @@ import WidgetListSection from './WidgetListSection';
 class App extends React.Component {
 
   state = initialData;
+  //
+  // state = {
+  //   widgets: any,
+  //   sections: any
+  //     'widgetList': {
+  //       id: 'widgetList',
+  //       title: 'Widget List',
+  //       widgetIds: ['widget-1', 'widget-2', 'widget-3'],
+  //     },
+  //   },
+  //   sectionOrder: ['section-1', 'section-2'],
+  // }
 
-  // @ts-ignore
-  onDragEnd = result => {
+   onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
 
     if(!destination) {
@@ -22,8 +33,7 @@ class App extends React.Component {
         return;
     }
 
-    // @ts-ignore
-    const startSection = this.state.sections[source.droppableId];
+    const startSection : any = (this as any).state.sections[source.droppableId];
     // @ts-ignore
     const finishSection = this.state.sections[destination.droppableId];
 
@@ -97,19 +107,5 @@ class App extends React.Component {
     );
   }
 }
-
-  // return (
-  //   <div className='content-container'>
-  //     <div className='dashboard-container'>
-  //         <Header></Header>
-  //         <Dashboard>
-  //           {this.renderLists()}
-  //         </Dashboard>
-  //     </div>
-  //     <div className='widgetlist-container'>
-  //       <WidgetList></WidgetList>
-  //     </div>
-  //   </div>
-  // );
 
 export default App;

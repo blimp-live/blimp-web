@@ -8,12 +8,12 @@ const initialData = {
     'dashboard': {
       id: 'dashboard',
       title: 'Dashboard',
-      widgetIds: ['widget-1', 'widget-2', 'widget-3'],
+      widgetIds: [],
     },
     'widgetList': {
       id: 'widgetList',
       title: 'Widget List',
-      widgetIds: [],
+      widgetIds: ['widget-1', 'widget-2', 'widget-3'],
     },
   },
   sectionOrder: ['section-1', 'section-2'],

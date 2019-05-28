@@ -1,22 +1,24 @@
 .dashboard-container {
-  margin: 8px;
+  margin: 1vh 0 1vh 1vw;
   border: 1px solid blue;
-  border-radius: 2px;
+  /* border-radius: 2px; */
+  /* margin-right:10px; */
+  bottom: 0px;
+  float: left;
+  height: 80vh;
+  width: 70vw;
+  display: flex;
+  flex: row;
+  position:absolute;
 }
 
-h3.title {
-  padding: 8px;
+.dashboard-widget {
+  flex-grow: 1
 }
 
-.dashboard {
-  height:100%;
-  width:100%;
-  bottom:0;
-}
-
-.dashboard-div {
-  height:79%;
-  width:79%;
-  bottom:0;
-  margin:0 0 1% 1%;
+.left-content-div {
+    height: 100vh;
+    width: 70vw;
+    float: left;
+    position:relative;
 }
