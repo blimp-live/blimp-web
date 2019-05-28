@@ -7,29 +7,28 @@ export default class WidgetListSection extends React.Component {
   render () {
     return (
       // @ts-ignore
-      <div className='widget-list-container'>
-        <h3 className='title'>
-          {
-            // @ts-ignore
-            this.props.section.title
-          }
-          </h3>
-          <Droppable droppableId={
-            // @ts-ignore
-            this.props.section.id}>
-            { provided => (
-                // @ts-ignore
-                <div className='widgetList' ref={provided.innerRef} {...provided.droppableProps}>
-                  {
-                    // @ts-ignore
-                    this.props.widgets.map((widget, index) => (<Widget key={widget.id} widget={widget} index={index}/>))
-                  }
-                  {provided.placeholder}
-                </div>
-              )
-            }
+      <div className="right-content-div">
+        <div className='widget-list-container'>
+            <Droppable
+              // @ts-ignore
+              isDropDisabled={true}
+              droppableId={
+              // @ts-ignore
+              this.props.section.id}>
+              { provided => (
+                  // @ts-ignore
+                  <div className='widget-list' ref={provided.innerRef} {...provided.droppableProps}>
+                    {
+                      // @ts-ignore
+                      this.props.widgets.map((widget, index) => (<Widget key={widget.id} widget={widget} index={index}/>))
+                    }
+                    {provided.placeholder}
+                  </div>
+                )
+              }
 
-          </Droppable>
+            </Droppable>
+        </div>
       </div>
     );
   }
