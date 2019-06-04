@@ -10,7 +10,6 @@ interface Props {
 }
 
 export class DeveloperPage extends React.Component<Props> {
-
   render(){
     return (
       <div>
@@ -18,9 +17,6 @@ export class DeveloperPage extends React.Component<Props> {
           <ul>
             <li>
               <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/calculator-example/">Calculator Example</Link>
             </li>
             <li>
               <Link to="/calculator-example/">Calculator Example</Link>

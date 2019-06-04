@@ -1,4 +1,3 @@
-
 import { ViewStateModel } from '../interfaces/viewStateModel';
 
 import {
