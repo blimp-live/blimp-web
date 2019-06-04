@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import { DashboardModel } from '../interfaces/dashboardModel';
+import {root} from '../config/endpoints';
 
-const root = 'http://localhost:8000'
 const sampleDashboard = {
   id: 102,
   name: 'Stanleys Dashboard',
