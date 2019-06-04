@@ -1,6 +1,9 @@
 import { ViewStateModel } from '../interfaces/viewStateModel';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a3237986b8457dae43ede0de41ecbd9e0f58894e
 import {
   EDIT_DASHBOARD,
   VIEW_DASHBOARD,
