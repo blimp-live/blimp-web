@@ -8,7 +8,7 @@ import {
 
 const initialState: ViewStateModel = {
   editDashboard: false,
-  home: false,
+  home: true,
   viewDashboard: false
 }
 
@@ -21,15 +21,21 @@ export function viewStateReducer(
       return {
         ...state,
         home: true,
+        viewDashboard: false,
+        editDashboard: false,
       }
     case VIEW_DASHBOARD:
       return {
         ...state,
+        home: false,
         viewDashboard: true,
+        editDashboard: false,
       }
     case EDIT_DASHBOARD:
       return {
         ...state,
+        home: false,
+        viewDashboard: false,
         editDashboard: true,
       }
     default:
