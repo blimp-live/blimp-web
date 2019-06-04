@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import { DashboardModel } from '../interfaces/dashboardModel';
+import {root} from '../config/endpoints';
 
-const root = 'http://localhost:8000'
 const sampleDashboard = {
   id: 102,
   name: 'Stanleys Dashboard',
@@ -49,9 +49,27 @@ export function loadDashboard(id: number) {
   }
 }
 
-export function saveDashboard(id: number, userId: number, contents: DashboardModel) {
-  // This is making a post request to the api?
+export function saveDashboard(id: number, name: String, contents: DashboardModel) {
+  return (dispatch: any) => {
+    dispatch(fetchingDashboard());
 
+    fetch(`${root}/dashboard/id/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        name,
+        contents
+      })
+    }).then(
+        (response: any) => response.json()
+    ).then(
+        (contents: any) => dispatch(setDashboard(contents.data))
+    ).catch(
+        (err: any) => {
+          console.error(`NETWORK ERROR: ${err.message}`)
+          dispatch(setDashboard(sampleDashboard))
+        }
+    )
+  }
 }
 
 export function createDashboard(name: String, userId: number) {

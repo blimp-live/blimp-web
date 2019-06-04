@@ -1,19 +1,13 @@
-<<<<<<< HEAD
-import { viewStateModel } from '../interfaces/viewStateModel';
-=======
+
 import { ViewStateModel } from '../interfaces/viewStateModel';
->>>>>>> d2b7aeef7e4557e08ed3256ceed745283b588bfa
 
 import {
-
-
+  EDIT_DASHBOARD,
+  VIEW_DASHBOARD,
+  VIEW_HOME
 } from '../actions/viewStateActions';
 
-<<<<<<< HEAD
-const initialState: viewStateModel = {
-=======
 const initialState: ViewStateModel = {
->>>>>>> d2b7aeef7e4557e08ed3256ceed745283b588bfa
   editDashboard: false,
   home: false,
   viewDashboard: false
@@ -22,14 +16,24 @@ const initialState: ViewStateModel = {
 export function viewStateReducer(
   state = initialState,
   action: any
-<<<<<<< HEAD
-): viewStateModel {
-
-
-
-
-=======
 ): ViewStateModel {
-  return initialState;
->>>>>>> d2b7aeef7e4557e08ed3256ceed745283b588bfa
+  switch(action.type) {
+    case VIEW_HOME:
+      return {
+        ...state,
+        home: true,
+      }
+    case VIEW_DASHBOARD:
+      return {
+        ...state,
+        viewDashboard: true,
+      }
+    case EDIT_DASHBOARD:
+      return {
+        ...state,
+        editDashboard: true,
+      }
+    default:
+      return state
+  }
 }
