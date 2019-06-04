@@ -30,6 +30,30 @@ export function setDashboard(contents: DashboardModel) {
   }
 }
 
+export function loadDashboard(id: number) {
+  return (dispatch: any) => {
+    dispatch(fetchingDashboard());
+
+    fetch(`${root}/dashboard/id/${id}`, {
+      method: 'GET'
+    }).then(
+        (response: any) => response.json()
+    ).then(
+        (contents: any) => dispatch(setDashboard(contents))
+    ).catch(
+        (err: any) => {
+          console.error(`NETWORK ERROR: ${err.message}`)
+          dispatch(setDashboard(sampleDashboard))
+        }
+    )
+  }
+}
+
+export function saveDashboard(id: number, userId: number, contents: DashboardModel) {
+  // This is making a post request to the api?
+
+}
+
 export function createDashboard(name: String, userId: number) {
   return (dispatch: any) => {
     dispatch(fetchingDashboard());
