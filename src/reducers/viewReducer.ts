@@ -1,11 +1,11 @@
-import { viewStateModel } from '../interfaces/viewStateModel';
+import { ViewStateModel } from '../interfaces/viewStateModel';
 
 import {
 
 
 } from '../actions/viewStateActions';
 
-const initialState: viewStateModel = {
+const initialState: ViewStateModel = {
   editDashboard: false,
   home: false,
   viewDashboard: false
@@ -14,9 +14,6 @@ const initialState: viewStateModel = {
 export function viewStateReducer(
   state = initialState,
   action: any
-): viewStateModel {
-
-
-
-
+): ViewStateModel {
+  return initialState;
 }
