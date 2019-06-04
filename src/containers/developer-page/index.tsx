@@ -10,6 +10,7 @@ interface Props {
 }
 
 export class DeveloperPage extends React.Component<Props> {
+
   render(){
     return (
       <div>
@@ -22,16 +23,21 @@ export class DeveloperPage extends React.Component<Props> {
               <Link to="/calculator-example/">Calculator Example</Link>
             </li>
             <li>
+              <Link to="/calculator-example/">Calculator Example</Link>
+            </li>
+            <li>
               <Link to="/hackthenorth/2019/">Hack the North</Link>
             </li>
             <li>
               <Link to="/developer/">Developer</Link>
             </li>
+            <li>
+              <Link to="/widget-list/">Widget List</Link>
+            </li>
           </ul>
         </nav>
         <h1>Developer</h1>
         <button onClick={() => this.props.actions.createDashboard('Stanley Huang', 69)}>Hello</button>
-        <button onClick={() => this.props.actions.saveDashboard(69, 'Riley Gowanlock', {})}>Save</button>
       </div>
     );
   }
