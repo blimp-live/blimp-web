@@ -1,6 +1,6 @@
 import { UserModel } from '../interfaces/userModel';
 
-const initialState: userModel = {
+const initialState: UserModel = {
   imgUrl: '',
   email: '',
   name: '',
@@ -10,8 +10,9 @@ const initialState: userModel = {
 export function userReducer(
   state = initialState,
   action: any
-): userModel {
+): UserModel {
   // TODO Fill in once we figure out how we're doing
   // authentication
   // We might want to use Passport.js
+  return state
 }
