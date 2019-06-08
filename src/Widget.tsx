@@ -3,6 +3,7 @@ import './Widget.css';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
+import ReactDOM from 'react-dom';
 
 interface WidgetProps {
   key: string;
@@ -11,8 +12,15 @@ interface WidgetProps {
 }
 
 class Widget extends React.Component<WidgetProps> {
+  // @ts-ignore
+  constructor(WidgetProps) {
+    super(WidgetProps);
+    this.state = { count: 0 };
+  }
   render() {
-    console.log(this.props);
+    console.log(this);
+    // const position = ReactDOM?.findDOMNode(this.forwardRef['UniqueElementIdentifier']).getBoundingClientRect(); //outputs <h3> coordinates
+    // console.log(ReactDOM?.findDOMNode(this.props.forwardRef === 'UniqueElementIdentifier')));
     return (
       <Draggable draggableId={this.props.widget.id} index={this.props.index}>
         {(provided, snapshot) => (

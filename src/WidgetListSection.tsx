@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import Widget from './Widget'
 import { Droppable } from 'react-beautiful-dnd';
 import './WidgetListSection.css';
 
 export default class WidgetListSection extends React.Component {
   render () {
+    const inputRef = createRef()
+    console.log(inputRef)
+
     return (
       // @ts-ignore
       <div className="right-content-div">
@@ -20,7 +23,7 @@ export default class WidgetListSection extends React.Component {
                   <div className='widget-list' ref={provided.innerRef} {...provided.droppableProps}>
                     {
                       // @ts-ignore
-                      this.props.widgets.map((widget, index) => (<Widget key={widget.id} widget={widget} index={index}/>))
+                      this.props.widgets.map((widget, index) => (<Widget ref={inputRef} key={widget.id} widget={widget} index={index}/>))
                     }
                     {provided.placeholder}
                   </div>

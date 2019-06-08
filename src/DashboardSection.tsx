@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import Widget from './Widget'
 import { Droppable } from 'react-beautiful-dnd';
 import './DashboardSection.css';
 
-export default class DashboardSection extends React.Component {
+class DashboardSection extends React.Component {
+
   render () {
     return (
       // @ts-ignore
@@ -29,3 +30,5 @@ export default class DashboardSection extends React.Component {
     );
   }
 }
+
+export default DashboardSection;
