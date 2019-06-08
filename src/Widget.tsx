@@ -15,25 +15,37 @@ class Widget extends React.Component<WidgetProps> {
   // @ts-ignore
   constructor(WidgetProps) {
     super(WidgetProps);
-    this.state = { count: 0 };
+    this.state = React.createRef();
+    // console.log(this.state);
   }
+
+  // @ts-ignore
+  refCallback = element => {
+    if (element) {
+      console.log("CALLBACK IS HAPPENING");
+      console.log(element.getBoundingClientRect());
+    }
+  };
+
   render() {
-    console.log(this);
+    // console.log(this);
     // const position = ReactDOM?.findDOMNode(this.forwardRef['UniqueElementIdentifier']).getBoundingClientRect(); //outputs <h3> coordinates
     // console.log(ReactDOM?.findDOMNode(this.props.forwardRef === 'UniqueElementIdentifier')));
     return (
-      <Draggable draggableId={this.props.widget.id} index={this.props.index}>
-        {(provided, snapshot) => (
-          <div
-            className='container'
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            {this.props.widget.content}
-          </div>
-        )}
-      </Draggable>
+      <div ref={this.refCallback}>
+        <Draggable draggableId={this.props.widget.id} index={this.props.index}>
+          {(provided: any, snapshot) => (
+            <div
+              className='container'
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+            >
+              {this.props.widget.content}
+            </div>
+          )}
+        </Draggable>
+      </div>
     );
   }
 }
