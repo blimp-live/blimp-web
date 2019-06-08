@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 import { DashboardModel } from '../interfaces/dashboardModel';
 import {root} from '../config/endpoints';
 
+const querystring = require('querystring');
 const sampleDashboard = {
   id: 102,
   name: 'Stanleys Dashboard',
@@ -55,10 +56,8 @@ export function saveDashboard(id: number, name: String, contents: DashboardModel
 
     fetch(`${root}/dashboard/id/${id}`, {
       method: 'PUT',
-      body: JSON.stringify({
-        name,
-        contents
-      })
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: querystring.stringify({name: name, contents: contents})
     }).then(
         (response: any) => response.json()
     ).then(
@@ -78,10 +77,8 @@ export function createDashboard(name: String, userId: number) {
 
     fetch(`${root}/dashboard`, {
       method: 'POST',
-      body: JSON.stringify({
-        name,
-        userId
-      })
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: querystring.stringify({name: name, userid: userId})
     }).then(
       (response: any) => response.json()
     ).then(
