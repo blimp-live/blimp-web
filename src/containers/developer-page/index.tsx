@@ -27,6 +27,9 @@ export class DeveloperPage extends React.Component<Props> {
             <li>
               <Link to="/developer/">Developer</Link>
             </li>
+            <li>
+              <Link to="/widget-list/">Widget List</Link>
+            </li>
           </ul>
         </nav>
         <h1>Developer</h1>
