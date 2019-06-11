@@ -33,8 +33,8 @@ export class DeveloperPage extends React.Component<Props> {
           </ul>
         </nav>
         <h1>Developer</h1>
-        <button onClick={() => this.props.actions.createDashboard('Stanley Huang', 69)}>Hello</button>
-        <button onClick={() => this.props.actions.saveDashboard(69, 'Riley Gowanlock', {})}>Save</button>
+        <button onClick={() => this.props.actions.createDashboard('Stanley Huang', 1)}>Hello</button>
+        <button onClick={() => this.props.actions.saveDashboard(1, 'Riley Gowanlock', '{}')}>Save</button>
       </div>
     );
   }
