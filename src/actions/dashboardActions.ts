@@ -40,7 +40,10 @@ export function loadDashboard(id: number) {
     }).then(
         (response: any) => response.json()
     ).then(
-        (contents: any) => dispatch(setDashboard(contents))
+        (contents: any) => {
+          dispatch(setDashboard(contents))
+          alert(contents[0].name)
+        }
     ).catch(
         (err: any) => {
           console.error(`NETWORK ERROR: ${err.message}`)

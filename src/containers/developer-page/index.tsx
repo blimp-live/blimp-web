@@ -10,6 +10,8 @@ interface Props {
 }
 
 export class DeveloperPage extends React.Component<Props> {
+  dashboard_name = ''
+  dashboard_id = 0
   render(){
     return (
       <div>
@@ -30,8 +32,38 @@ export class DeveloperPage extends React.Component<Props> {
           </ul>
         </nav>
         <h1>Developer</h1>
-        <button onClick={() => this.props.actions.createDashboard('Stanley Huang', 1)}>Hello</button>
-        <button onClick={() => this.props.actions.saveDashboard(1, 'Riley Gowanlock', '{}')}>Save</button>
+
+        <form>
+          <label>
+            Dashboard Name:
+            <input type="text" name="name" onChange={(evt) => { this.dashboard_name = evt.target.value; }}/>
+          </label>
+          <button onClick={() => this.props.actions.createDashboard(this.dashboard_name, 1)}>Create</button>
+        </form>
+        <br/>
+
+        <form>
+          <label>
+            Dashboard Name:
+            <input type="text" name="name" onChange={(evt) => { this.dashboard_name = evt.target.value; }}/>
+          </label>
+          <label>
+            Dashboard ID:
+            <input type="number" name="id" onChange={(evt) => { this.dashboard_id = parseInt(evt.target.value); }}/>
+          </label>
+          <button onClick={() => this.props.actions.saveDashboard(this.dashboard_id, this.dashboard_name, '{}')}>Save</button>
+        </form>
+        <br/>
+
+        <form>
+          <label>
+            Dashboard ID:
+            <input type="number" name="id" onChange={(evt) => { this.dashboard_id = parseInt(evt.target.value); }}/>
+          </label>
+          <button onClick={() => this.props.actions.loadDashboard(this.dashboard_id)}>Load</button>
+        </form>
+        <br/>
+
       </div>
     );
   }
