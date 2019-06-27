@@ -21,13 +21,10 @@ export class MarketingPage extends React.Component<Props> {
               <Link to="/calculator-example/">Calculator Example</Link>
             </li>
             <li>
-              <Link to="/old-dashboard/">Old Dashboard</Link>
+              <Link to="/midterm/">Midterm Demo</Link>
             </li>
             <li>
               <Link to="/developer/">Developer</Link>
-            </li>
-            <li>
-              <Link to="/widget-list/">Widget List</Link>
             </li>
           </ul>
         </nav>

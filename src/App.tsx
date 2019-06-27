@@ -18,8 +18,7 @@ export const App = (): JSX.Element => {
       <Route exact path="/" component={MarketingPage} />
       <Route exact path="/calculator-example/" component={Calculator} />
       <Route exact path="/developer" component={DeveloperPage} />
-      <Route exact path="/old-dashboard" component={OldDashboard} />
-      <Route exact path="/widget-list" component={WidgetListSection} />
+      <Route exact path="/midterm" component={OldDashboard} />
     </React.Fragment>
   )
 }
