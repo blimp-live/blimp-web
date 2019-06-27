@@ -5,8 +5,9 @@ import {root} from '../config/endpoints';
 
 const querystring = require('querystring');
 
-const Root = {
-  children: NodeModel,
+const Root : RootNodeModel = {
+  children: null,
+  type: 'RootNode',
 }
 
 const sampleDashboard = {
