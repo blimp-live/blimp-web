@@ -16,6 +16,8 @@ import { viewStateReducer } from './viewStateReducer';
 
 import { ViewStateModel } from '../interfaces/viewStateModel';
 
+import { widgetReducer } from "./widgetReducer";
+
 interface StoreEnhancerState {}
 
 export interface RootState extends StoreEnhancerState {
@@ -23,10 +25,12 @@ export interface RootState extends StoreEnhancerState {
   calculatorReducer: CalculatorState;
   dashboardReducer: DashboardModel;
   viewStateReducer: ViewStateModel;
+  widgetReducer;
 }
 export const rootReducer = combineReducers<RootState>({
   router,
   calculatorReducer: calculatorReducer as any,
   dashboardReducer: dashboardReducer as any,
   viewStateReducer: viewStateReducer as any,
+  widgetReducer: widgetReducer as any,
 });
