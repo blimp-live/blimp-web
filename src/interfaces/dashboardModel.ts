@@ -1,7 +1,9 @@
+import { RootNodeModel } from './nodeModels';
+
 export interface DashboardModel {
   id: number;
   name: String;
-  contents: String;
+  contents: RootNodeModel;
   createdAt: number;
   lastSaved: number;
   public: boolean;
