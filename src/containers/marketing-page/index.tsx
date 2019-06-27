@@ -21,7 +21,7 @@ export class MarketingPage extends React.Component<Props> {
               <Link to="/calculator-example/">Calculator Example</Link>
             </li>
             <li>
-              <Link to="/hackthenorth/2019/">Hack the North</Link>
+              <Link to="/old-dashboard/">Old Dashboard</Link>
             </li>
             <li>
               <Link to="/developer/">Developer</Link>
