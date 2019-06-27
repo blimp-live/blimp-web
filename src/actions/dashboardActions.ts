@@ -1,12 +1,18 @@
 import { createAction } from 'redux-actions';
 import { DashboardModel } from '../interfaces/dashboardModel';
+import { RootNodeModel, NodeModel } from '../interfaces/nodeModels';
 import {root} from '../config/endpoints';
 
 const querystring = require('querystring');
+
+const Root = {
+  children: NodeModel,
+}
+
 const sampleDashboard = {
   id: 102,
   name: 'Stanleys Dashboard',
-  contents: "hi",
+  contents: Root,
   createdAt: 1558475608,
   lastSaved: 1558475608,
   public: true,

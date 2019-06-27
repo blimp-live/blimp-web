@@ -1,6 +1,6 @@
 import React from 'react';
 import initialData from './initialData';
-import '@atlaskit/css-reset';
+//import '@atlaskit/css-reset';
 import { DragDropContext } from 'react-beautiful-dnd';
 import DashboardSection from './DashboardSection';
 import WidgetListSection from './WidgetListSection';
