@@ -1,5 +1,6 @@
 import { DashboardModel } from '../interfaces/dashboardModel';
 import { RootNodeModel, SectionNodeModel, WidgetModel } from '../interfaces/nodeModels';
+import uuid4 from 'uuid4';
 
 import {
   FETCHING_DASHBOARD,
@@ -12,12 +13,14 @@ const Root : RootNodeModel = {
       children: [
         {
           widgetType: 'Clock',
+          Id: uuid4(),
           options: null,
           version: 1.0,
           type: 'WidgetModel',
         } as WidgetModel,
         {
           widgetType: 'Clock',
+          Id: uuid4(),
           options: null,
           version: 1.0,
           type: 'WidgetModel',
