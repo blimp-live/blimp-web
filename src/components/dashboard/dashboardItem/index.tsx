@@ -2,6 +2,7 @@ import * as React from "react";
 import { NodeModel, WidgetModel, SectionNodeModel } from "../../../interfaces/nodeModels";
 import Widget from "../../../components/widget";
 import Section from "../section";
+import uuid4 from 'uuid4';
 
 interface Props {
     contents: NodeModel;
@@ -12,10 +13,8 @@ export class DashboardItem extends React.Component<Props> {
 
     createDashboardItems() {
       const dashboardItems = [];
-      let key = 0;
       for(let child of (this.props.contents as SectionNodeModel).children) {
-        dashboardItems.push(<DashboardItem key={key} contents={child} widgets={this.props.widgets} />)
-        key += 1;
+        dashboardItems.push(<DashboardItem key={uuid4()} contents={child} widgets={this.props.widgets} />)
       }
       return dashboardItems;
     }
