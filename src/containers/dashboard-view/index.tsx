@@ -2,16 +2,22 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState, rootReducer } from "../../reducers";
+import { RootNodeModel } from "../../interfaces/nodeModels";
+import Dashboard from "../../components/dashboard"
 
 interface Props {
   match: any;
   actions: any;
+  contents: RootNodeModel;
+  widgets: any;
 }
 
 export class DashboardView extends React.Component<Props> {
   render(){
     return (
-      <h1>{this.props.match.params.username}'s Dashboard named {this.props.match.params.dashboardName}</h1>
+      <div>
+        <Dashboard contents={this.props.contents} widgets={this.props.widgets} />
+      </div>
     );
   }
 }
@@ -19,7 +25,10 @@ export class DashboardView extends React.Component<Props> {
 const actions: any = Object.assign({}, null);
 
 function mapStateToProps(state: RootState) {
-  return {};
+  return {
+    contents: state.dashboardReducer.contents,
+    widgets: state.widgetReducer.widgets,
+  };
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
