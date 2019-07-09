@@ -1,15 +1,21 @@
 import { DashboardModel } from '../interfaces/dashboardModel';
+import { RootNodeModel } from '../interfaces/nodeModels';
 
 import {
   FETCHING_DASHBOARD,
   SET_DASHBOARD,
 } from '../actions/dashboardActions';
 
+const Root : RootNodeModel = {
+  children: null,
+  type: 'RootNode',
+}
+
 const initialState: DashboardModel = {
   id: -1,
   name: '',
   contentHistory: [],
-  contents: '',
+  contents: Root,
   createdAt: 0,
   isFetching: false,
   isSaving: false,

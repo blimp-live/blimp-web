@@ -15,10 +15,14 @@ class Widget extends React.Component<WidgetProps> {
   // @ts-ignore
   constructor(WidgetProps) {
     super(WidgetProps);
-    this.state = React.createRef();
+    this.state = React.createRef<Widget>();
     // console.log(this.state);
   }
 
+  generateWidget() {
+    const WidgetComponent = this.props.widget;
+    return <WidgetComponent/>
+  }
   // @ts-ignore
   refCallback = element => {
     if (element) {
@@ -31,9 +35,10 @@ class Widget extends React.Component<WidgetProps> {
     // console.log(this);
     // const position = ReactDOM?.findDOMNode(this.forwardRef['UniqueElementIdentifier']).getBoundingClientRect(); //outputs <h3> coordinates
     // console.log(ReactDOM?.findDOMNode(this.props.forwardRef === 'UniqueElementIdentifier')));
+    console.log(this.props.index)
     return (
       <div ref={this.refCallback}>
-        <Draggable draggableId={this.props.widget.id} index={this.props.index}>
+        <Draggable draggableId={"widget"+this.props.index} index={this.props.index}>
           {(provided: any, snapshot) => (
             <div
               className='container'
@@ -41,7 +46,7 @@ class Widget extends React.Component<WidgetProps> {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
             >
-              {this.props.widget.content}
+              {this.generateWidget()}
             </div>
           )}
         </Draggable>
