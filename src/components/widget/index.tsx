@@ -16,7 +16,6 @@ class Widget extends React.Component<WidgetProps> {
   constructor(WidgetProps) {
     super(WidgetProps);
     this.state = React.createRef<Widget>();
-    // console.log(this.state);
   }
 
   generateWidget() {
@@ -35,7 +34,6 @@ class Widget extends React.Component<WidgetProps> {
     // console.log(this);
     // const position = ReactDOM?.findDOMNode(this.forwardRef['UniqueElementIdentifier']).getBoundingClientRect(); //outputs <h3> coordinates
     // console.log(ReactDOM?.findDOMNode(this.props.forwardRef === 'UniqueElementIdentifier')));
-    console.log(this.props.index)
     // return (
     //   <div ref={this.refCallback}>
     //     <Draggable draggableId={"widget"+this.props.index} index={this.props.index}>
