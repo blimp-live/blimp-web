@@ -33,8 +33,10 @@ export class DashboardItem extends React.Component<Props> {
         // We have a recursive style to this
         else if (this.props.contents.type === 'SectionModel') {
             return (
-                <Section>
-                  {this.createDashboardItems()}
+                <Section
+                    sectionDivision={(this.props.contents as SectionNodeModel).sectionDivision}
+                    relativeSize={(this.props.contents as SectionNodeModel).relativeSize} >
+                    {this.createDashboardItems()}
                 </Section>
             )
         }

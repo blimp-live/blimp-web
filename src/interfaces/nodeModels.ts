@@ -8,7 +8,7 @@ export interface NodeModel {
 
 export interface SectionNodeModel extends NodeModel {
   children: NodeModel[],
-  sectionDivision?: SectionDivision,
+  sectionDivision: SectionDivision,
   relativeSize: number[],
 }
 

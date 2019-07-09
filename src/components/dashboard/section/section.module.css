@@ -1,0 +1,13 @@
+.section {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.sectionHorizontal {
+  flex-direction: row;
+}
+
+.sectionVertical {
+  flex-direction: column;
+}
