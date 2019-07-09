@@ -24,7 +24,7 @@ export class DashboardItem extends React.Component<Props> {
         if (this.props.contents.type === 'WidgetModel') {
             const widget = this.props.contents as WidgetModel;
             return (
-                <Widget key={widget.Id} index={1} widget={this.props.widgets[(this.props.contents as WidgetModel).widgetType]} />
+                <Widget key={widget.id} index={1} widget={this.props.widgets[(this.props.contents as WidgetModel).widgetType]} />
             );
         }
         // This is handling the case that we're not at a Leaf node

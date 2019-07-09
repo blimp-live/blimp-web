@@ -13,14 +13,14 @@ const Root : RootNodeModel = {
       children: [
         {
           widgetType: 'Clock',
-          Id: uuid4(),
+          id: uuid4(),
           options: null,
           version: 1.0,
           type: 'WidgetModel',
         } as WidgetModel,
         {
           widgetType: 'Clock',
-          Id: uuid4(),
+          id: uuid4(),
           options: null,
           version: 1.0,
           type: 'WidgetModel',
