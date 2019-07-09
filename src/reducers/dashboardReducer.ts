@@ -23,7 +23,7 @@ const Root : RootNodeModel = {
           type: 'WidgetModel',
         } as WidgetModel,
       ],
-      sectionDivision: 'HORIZONTAL',
+      sectionDivision: 'VERTICAL',
       relativeSize: [0.5, 0.5],
       type: 'SectionModel',
     } as SectionNodeModel,
