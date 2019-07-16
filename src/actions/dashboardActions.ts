@@ -78,6 +78,14 @@ export function saveDashboard(id: number, name: String, contents: DashboardModel
   }
 }
 
+export function addWidget(widgetId: String) {
+  // This will add a Widget to the current contents
+}
+
+export function removeWidget(widgetId: String) {
+
+}
+
 export function createDashboard(name: String, userId: number) {
   return (dispatch: any) => {
     dispatch(fetchingDashboard());
