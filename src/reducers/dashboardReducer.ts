@@ -5,7 +5,17 @@ import uuid4 from 'uuid4';
 import {
   FETCHING_DASHBOARD,
   SET_DASHBOARD,
+  ADD_WIDGET,
+  REMOVE_WIDGET,
 } from '../actions/dashboardActions';
+
+function removeWidgetFromState(id: String, contents: RootNodeModel) {
+  // Helper that will cycle through the contents childrens recurisvely
+  // and look for a widget of said Id
+
+
+  return contents;
+}
 
 const Root : RootNodeModel = {
   children: [
@@ -63,6 +73,16 @@ export function dashboardReducer(
         ...state,
         ...action.payload.contents,
         isFetching: false,
+      }
+
+    case ADD_WIDGET:
+      return {
+        ...state
+      }
+    case REMOVE_WIDGET:
+      return {
+        ...state,
+        contents: removeWidgetFromState(action.widgetId, state.contents),
       }
     default:
       return state
