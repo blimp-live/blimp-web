@@ -26,6 +26,9 @@ export class MarketingPage extends React.Component<Props> {
             <li>
               <Link to="/developer/">Developer</Link>
             </li>
+            <li>
+              <Link to="/dashboard-view/">Dashboard View</Link>
+            </li>
           </ul>
         </nav>
         <h1>Welcome Home!</h1>
