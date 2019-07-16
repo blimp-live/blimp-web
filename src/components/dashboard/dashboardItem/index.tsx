@@ -2,6 +2,7 @@ import * as React from "react";
 import { NodeModel, WidgetModel, SectionNodeModel } from "../../../interfaces/nodeModels";
 import Widget from "../../../components/widget";
 import Section from "../section";
+import uuid4 from 'uuid4';
 
 interface Props {
     contents: NodeModel;
@@ -12,10 +13,8 @@ export class DashboardItem extends React.Component<Props> {
 
     createDashboardItems() {
       const dashboardItems = [];
-      let key = 0;
       for(let child of (this.props.contents as SectionNodeModel).children) {
-        dashboardItems.push(<DashboardItem key={key} contents={child} widgets={this.props.widgets} />)
-        key += 1;
+        dashboardItems.push(<DashboardItem key={uuid4()} contents={child} widgets={this.props.widgets} />)
       }
       return dashboardItems;
     }
@@ -23,8 +22,9 @@ export class DashboardItem extends React.Component<Props> {
     render() {
         // This is the case that we hit a Leaf Node (Widget)
         if (this.props.contents.type === 'WidgetModel') {
+            const widget = this.props.contents as WidgetModel;
             return (
-                <Widget key='1' index={1} widget={this.props.widgets[(this.props.contents as WidgetModel).widgetType]} />
+                <Widget key={widget.id} index={1} widget={this.props.widgets[(this.props.contents as WidgetModel).widgetType]} />
             );
         }
         // This is handling the case that we're not at a Leaf node

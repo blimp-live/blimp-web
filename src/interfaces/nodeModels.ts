@@ -23,6 +23,7 @@ export interface RootNodeModel extends NodeModel {
 
 export interface WidgetModel extends NodeModel {
   widgetType: string,
+  id: string,
   options: any,
   version: number,
 }
