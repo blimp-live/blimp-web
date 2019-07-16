@@ -1,6 +1,7 @@
 import { DashboardModel } from '../interfaces/dashboardModel';
 import { RootNodeModel, SectionNodeModel, WidgetModel } from '../interfaces/nodeModels';
 import uuid4 from 'uuid4';
+import {removeWidgetFromState} from '../utils/dashboardModelUtils';
 
 import {
   FETCHING_DASHBOARD,
@@ -8,14 +9,6 @@ import {
   ADD_WIDGET,
   REMOVE_WIDGET,
 } from '../actions/dashboardActions';
-
-function removeWidgetFromState(id: String, contents: RootNodeModel) {
-  // Helper that will cycle through the contents childrens recurisvely
-  // and look for a widget of said Id
-
-
-  return contents;
-}
 
 const Root : RootNodeModel = {
   children: [
@@ -36,7 +29,7 @@ const Root : RootNodeModel = {
           type: 'WidgetModel',
         } as WidgetModel,
       ],
-      sectionDivision: 'VERTICAL',
+      sectionDivision: 'HORIZONTAL',
       relativeSize: [0.5, 0.5],
       type: 'SectionModel',
     } as SectionNodeModel,

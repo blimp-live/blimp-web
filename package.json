@@ -29,22 +29,26 @@
     "redux-actions": "^2.6.4",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.2.0",
-    "typescript": "3.4.5",
     "uuid4": "^1.1.4"
   },
   "devDependencies": {
+    "@atlaskit/css-reset": "^4.0.1",
+    "@material-ui/core": "^3.9.3",
+    "@types/chai": "^4.1.7",
     "@types/jest": "24.0.12",
+    "@types/mocha": "^5.2.7",
     "@types/node": "12.0.0",
     "@types/react": "16.7.18",
+    "@types/react-beautiful-dnd": "^11.0.2",
     "@types/react-dom": "16.8.4",
     "@types/react-redux": "^7.0.0",
     "@types/react-router-dom": "^4.3.1",
     "@types/react-router-redux": "^5.0.17",
     "@types/redux-actions": "^2.3.1",
-    "@atlaskit/css-reset": "^4.0.1",
-    "@material-ui/core": "^3.9.3",
-    "@types/react-beautiful-dnd": "^11.0.2",
     "@types/styled-components": "^4.1.15",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
     "react": "^16.8.6",
     "react-beautiful-dnd": "^11.0.3",
     "react-dnd": "^7.4.5",
@@ -52,12 +56,13 @@
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "styled-components": "^4.2.0",
-    "typescript": "3.4.5"
+    "ts-node": "^8.3.0",
+    "typescript": "^3.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "mocha -r ts-node/register src/tests/*test.ts",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
