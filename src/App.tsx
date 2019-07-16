@@ -8,7 +8,7 @@ import { MarketingPage } from './containers/marketing-page'
 import DeveloperPage from './containers/developer-page'
 import OldDashboard from './containers/old-dashboard'
 import WidgetListSection from './containers/old-dashboard/WidgetListSection'
-import DashboardSection from './containers/old-dashboard/DashboardSection'
+import DashboardView from './containers/dashboard-view'
 
 // Actions
 import { viewDashboard } from './actions/viewStateActions'
@@ -20,6 +20,7 @@ export const App = (): JSX.Element => {
       <Route exact path="/calculator-example/" component={Calculator} />
       <Route exact path="/developer" component={DeveloperPage} />
       <Route exact path="/midterm" component={OldDashboard} />
+      <Route exact path="/dashboard-view" component={DashboardView} />
     </React.Fragment>
   )
 }
