@@ -40,7 +40,7 @@ const Root : RootNodeModel = {
         {
           // Right side of dashboard
           sectionDivision: 'HORIZONTAL',
-          relativeSize: [0.15, 0.35, 0.45, 0.05],
+          relativeSize: [0.20, 0.30, 0.4, 0.10],
           type: 'SectionModel',
           children: [
             {
@@ -63,8 +63,8 @@ const Root : RootNodeModel = {
                       type: 'WidgetModel',
                     } as WidgetModel,
                     {
-                      // Weather
-                      widgetType: 'ExampleComponent',
+                      // Time
+                      widgetType: 'Clock',
                       options: null,
                       version: 1.0,
                       type: 'WidgetModel',
@@ -78,8 +78,8 @@ const Root : RootNodeModel = {
                   type: 'SectionModel',
                   children: [
                     {
-                      // Time
-                      widgetType: 'Clock',
+                      // Weather
+                      widgetType: 'ExampleComponent',
                       options: null,
                       version: 1.0,
                       type: 'WidgetModel',

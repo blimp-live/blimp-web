@@ -1,5 +1,7 @@
 .section {
   display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
   height: 100%;
   width: 100%;
   color: #635554;
