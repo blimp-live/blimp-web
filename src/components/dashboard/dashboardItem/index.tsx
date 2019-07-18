@@ -3,6 +3,7 @@ import { NodeModel, WidgetModel, SectionNodeModel } from "../../../interfaces/no
 import Widget from "../../../components/widget";
 import Section from "../section";
 import uuid4 from 'uuid4';
+import styles from "./dashboardItem.module.css"
 
 interface Props {
     contents: NodeModel;
