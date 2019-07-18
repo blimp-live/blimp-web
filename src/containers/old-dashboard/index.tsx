@@ -1,27 +1,67 @@
-import React from 'react';
-import initialData from './initialData';
-import '@atlaskit/css-reset';
+import React, {createRef} from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import DashboardSection from './DashboardSection';
 import WidgetListSection from './WidgetListSection';
+import WidgetContainer from './WidgetContainer'
+import * as widgets from 'blimp-live-widgets';
 
 class OldDashboard extends React.Component {
 
-  state = initialData;
-  //
-  // state = {
-  //   widgets: any,
-  //   sections: any
-  //     'widgetList': {
-  //       id: 'widgetList',
-  //       title: 'Widget List',
-  //       widgetIds: ['widget-1', 'widget-2', 'widget-3'],
-  //     },
-  //   },
-  //   sectionOrder: ['section-1', 'section-2'],
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      widgets: this.populateWidgets(),
+      sections: {
+        'dashboard': {
+          id: 'dashboard',
+          widgetIds: [],
+        },
+        'widgetList': {
+          id: 'widgetList',
+          widgetIds: this.getAllWidgetIDs()
+        },
+      },
+    }
+  }
 
-   onDragEnd = (result: any) => {
+  getAllWidgetIDs() {
+    // @ts-ignore
+    const widgetIDs = [];
+    let count = 1;
+    for (let widgetID in widgets) {
+        // Don't want to import anything that isn't a component
+        // TODO: We'll need to have some sort of 'widget' blacklist
+        // in the blimp-live-widgets that indicates it's a theme and not a Component
+        // For now: Hard coding is fine...
+        if (widgetID != 'ClockThemes') {
+          widgetIDs.push(widgetID)
+          count += 1
+        }
+    }
+    return widgetIDs
+  }
+
+  populateWidgets() {
+    // @ts-ignore
+    const inputRef = createRef();
+    let count = 1;
+    let widgetObject = {}
+    for (let widgetID in widgets) {
+        // Don't want to import anything that isn't a component
+        // TODO: We'll need to have some sort of 'widget' blacklist
+        // in the blimp-live-widgets that indicates it's a theme and not a Component
+        // For now: Hard coding is fine...
+        if (widgetID != 'ClockThemes') {
+          const WidgetComponent = widgets[widgetID]
+          // @ts-ignore
+          widgetObject[widgetID] = <WidgetContainer key={count} widgetID={widgetID} index={count} ref={inputRef} widget={WidgetComponent}/>
+          count += 1
+        }
+    }
+    return widgetObject
+  }
+
+  onDragEnd = (result: any) => {
     const { destination, source, draggableId } = result;
 
     if(!destination) {
@@ -33,11 +73,12 @@ class OldDashboard extends React.Component {
         return;
     }
 
+    // The section we are dragging from
     const startSection : any = (this as any).state.sections[source.droppableId];
-    // @ts-ignore
-    const finishSection = this.state.sections[destination.droppableId];
+    // The section we are dragging to
+    const finishSection : any = (this as any).state.sections[destination.droppableId];
 
-    if (startSection === finishSection){
+    if (startSection.id === finishSection.id){
       const newWidgetIds = Array.from(startSection.widgetIds);
       newWidgetIds.splice(source.index, 1);
       newWidgetIds.splice(destination.index, 0, draggableId);
@@ -50,6 +91,7 @@ class OldDashboard extends React.Component {
       const newState = {
         ...this.state,
         sections: {
+          // @ts-ignore
           ...this.state.sections,
           [newSection.id]: newSection,
         },
@@ -59,15 +101,16 @@ class OldDashboard extends React.Component {
       return;
     }
 
-    const startWidgetIds = Array.from(startSection.widgetIds);
-    startWidgetIds.splice(source.index, 1);
-    const newStartWidgetIds = {
-      ...startSection,
-      widgetIds: startWidgetIds,
-    };
-
+    // Might need this in the future
+    // const startWidgetIds = Array.from(startSection.widgetIds);
+    // startWidgetIds.splice(source.index, 1); // not sure about this
+    // const newStartWidgetIds = {
+    //   ...startSection,
+    //   widgetIds: startWidgetIds,
+    // };
     const finishWidgetIds = Array.from(finishSection.widgetIds);
     finishWidgetIds.splice(destination.index, 0, draggableId);
+
     const newFinishWidgetIds = {
       ...finishSection,
       widgetIds: finishWidgetIds,
@@ -76,13 +119,13 @@ class OldDashboard extends React.Component {
     const newState = {
         ...this.state,
         sections: {
+          // @ts-ignore
           ...this.state.sections,
-          [newStartWidgetIds.id]: newStartWidgetIds,
+          // [newStartWidgetIds.id]: newStartWidgetIds,
           [newFinishWidgetIds.id]: newFinishWidgetIds,
         },
       };
     this.setState(newState);
-
   }
 
   render() {
@@ -95,9 +138,9 @@ class OldDashboard extends React.Component {
      // @ts-ignore
     const widgetListWidgets = widgetListSection.widgetIds.map(widgetId => this.state.widgets[widgetId]);
     // @ts-ignore
-    const section1 = <DashboardSection key='dashboard' section={dashboardSection} widgets={dashboardWidgets} />;
+    const section1 = <DashboardSection key='dashboard' section={dashboardSection} widgetComponents={dashboardWidgets}/>;
     // @ts-ignore
-    const section2 = <WidgetListSection key='widgetList' section={widgetListSection} widgets={widgetListWidgets} />;
+    const section2 = <WidgetListSection key='widgetList' section={widgetListSection} widgetComponents={widgetListWidgets} />;
 
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
