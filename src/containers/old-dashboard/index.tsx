@@ -73,15 +73,12 @@ class OldDashboard extends React.Component {
         return;
     }
 
+    // The section we are dragging from
     const startSection : any = (this as any).state.sections[source.droppableId];
+    // The section we are dragging to
     const finishSection : any = (this as any).state.sections[destination.droppableId];
 
-    console.log("start section");
-    console.log(startSection);
-    console.log("finish section");
-    console.log(finishSection);
     if (startSection.id === finishSection.id){
-      console.log("sections are the same");
       const newWidgetIds = Array.from(startSection.widgetIds);
       newWidgetIds.splice(source.index, 1);
       newWidgetIds.splice(destination.index, 0, draggableId);
@@ -104,6 +101,7 @@ class OldDashboard extends React.Component {
       return;
     }
 
+    // Might need this in the future
     // const startWidgetIds = Array.from(startSection.widgetIds);
     // startWidgetIds.splice(source.index, 1); // not sure about this
     // const newStartWidgetIds = {

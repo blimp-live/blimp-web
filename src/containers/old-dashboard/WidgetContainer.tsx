@@ -15,7 +15,6 @@ class WidgetContainer extends React.Component<WidgetContainerProps> {
   // @ts-ignore
   constructor(WidgetContainerProps) {
     super(WidgetContainerProps);
-    this.state = React.createRef<WidgetContainer>();
   }
 
   generateWidget() {
@@ -27,7 +26,6 @@ class WidgetContainer extends React.Component<WidgetContainerProps> {
   // @ts-ignore
   refCallback = element => {
     if (element) {
-      console.log("CALLBACK IS HAPPENING");
       console.log(element.getBoundingClientRect());
     }
   };
