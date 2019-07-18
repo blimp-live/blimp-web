@@ -22,12 +22,14 @@ const Root : RootNodeModel = {
           type: 'SectionModel',
           children: [
             {
+              // Live Feed
               widgetType: 'IFrameComponent',
               options: null,
               version: 1.0,
               type: 'WidgetModel',
             } as WidgetModel,
             {
+              // Schedule
               widgetType: 'ScrollingText',
               options: null,
               version: 1.0,
@@ -48,9 +50,57 @@ const Root : RootNodeModel = {
               type: 'SectionModel',
               children: [
                 {
-                }
+                  // Top row of top infobar
+                  sectionDivision: 'HORIZONTAL',
+                  relativeSize: [0.5, 0.5],
+                  type: 'SectionModel',
+                  children: [
+                    {
+                      // Hack the North Logo
+                      widgetType: 'HelloWorld',
+                      options: null,
+                      version: 1.0,
+                      type: 'WidgetModel',
+                    } as WidgetModel,
+                    {
+                      // Weather
+                      widgetType: 'ExampleComponent',
+                      options: null,
+                      version: 1.0,
+                      type: 'WidgetModel',
+                    } as WidgetModel,
+                  ],
+                } as SectionNodeModel,
+                {
+                  // Bottom row of top infobar
+                  sectionDivision: 'HORIZONTAL',
+                  relativeSize: [0.5, 0.5],
+                  type: 'SectionModel',
+                  children: [
+                    {
+                      // Time
+                      widgetType: 'Clock',
+                      options: null,
+                      version: 1.0,
+                      type: 'WidgetModel',
+                    } as WidgetModel,
+                    {
+                      // Countdown
+                      widgetType: 'Countdown',
+                      options: null,
+                      version: 1.0,
+                      type: 'WidgetModel',
+                    } as WidgetModel,
+                  ],
+                } as SectionNodeModel,
               ],
             } as SectionNodeModel,
+            {
+              widgetType: 'ExampleComponent',
+              options: null,
+              version: 1.0,
+              type: 'WidgetModel',
+            } as WidgetModel,
             {
               widgetType: 'HelloWorld',
               options: null,
