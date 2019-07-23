@@ -46,7 +46,9 @@ class OldDashboard extends React.Component {
     const inputRef = createRef();
     let count = 1;
     let widgetObject = {}
+    console.log("populate")
     for (let widgetID in widgets) {
+      console.log(widgetID)
         // Don't want to import anything that isn't a component
         // TODO: We'll need to have some sort of 'widget' blacklist
         // in the blimp-live-widgets that indicates it's a theme and not a Component
@@ -56,6 +58,13 @@ class OldDashboard extends React.Component {
           // @ts-ignore
           widgetObject[widgetID] = <WidgetContainer key={count} widgetID={widgetID} index={count} ref={inputRef} widget={WidgetComponent}/>
           count += 1
+        }
+        if(widgetID === 'ExampleComponent') {
+          console.log("Inside Example Component")
+          console.log(widgets[widgetID].setState({
+            test: "john"
+          }))
+          console.log("After setting options")
         }
     }
     return widgetObject
