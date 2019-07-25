@@ -24,6 +24,8 @@ const sampleDashboard = null
 
 export const FETCHING_DASHBOARD = "FETCHING_DASHBOARD"
 export const SET_DASHBOARD = "SET_DASHBOARD"
+export const ADD_WIDGET = "ADD_WIDGET";
+export const REMOVE_WIDGET = "REMOVE_WIDGET";
 
 export function fetchingDashboard() {
   return {
@@ -80,12 +82,19 @@ export function saveDashboard(id: number, name: String, contents: DashboardModel
   }
 }
 
-export function addWidget(widgetId: String) {
-  // This will add a Widget to the current contents
+export function addWidgetAfter() {
+  return {
+    type: ADD_WIDGET,
+  }
 }
 
 export function removeWidget(widgetId: String) {
-
+  // We associate a widget with some unique identifier
+  // All this does is it removes the from the contents/model
+  return {
+    type: REMOVE_WIDGET,
+    widgetId: widgetId
+  }
 }
 
 export function createDashboard(name: String, userId: number) {
