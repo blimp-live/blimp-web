@@ -13,11 +13,11 @@ interface Props {
 export class DashboardItem extends React.Component<Props> {
 
     createDashboardItems() {
-      const dashboardItems = [];
-      for(let child of (this.props.contents as SectionNodeModel).children) {
-        dashboardItems.push(<DashboardItem key={uuid4()} contents={child} widgets={this.props.widgets} />)
-      }
-      return dashboardItems;
+    //   const dashboardItems = [];
+    //   for(let child of (this.props.contents as SectionNodeModel).children) {
+    //     dashboardItems.push(<DashboardItem key={uuid4()} contents={child} widgets={this.props.widgets} />)
+    //   }
+    //   return dashboardItems;
     }
 
     render() {
@@ -37,7 +37,7 @@ export class DashboardItem extends React.Component<Props> {
                 <Section
                     sectionDivision={(this.props.contents as SectionNodeModel).sectionDivision}
                     relativeSize={(this.props.contents as SectionNodeModel).relativeSize} >
-                    {this.createDashboardItems()}
+                    {/* {this.createDashboardItems()} */}
                 </Section>
             )
         }

@@ -8,7 +8,7 @@ import Dashboard from "../../components/dashboard"
 interface Props {
   match: any;
   actions: any;
-  contents: RootNodeModel;
+  contents: any;
   widgets: any;
 }
 
