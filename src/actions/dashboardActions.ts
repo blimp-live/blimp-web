@@ -5,20 +5,22 @@ import {root} from '../config/endpoints';
 
 const querystring = require('querystring');
 
-const Root : RootNodeModel = {
-  children: null,
-  type: 'RootNode',
-}
+// const Root : RootNodeModel = {
+//   children: null,
+//   type: 'RootNode',
+// }
 
-const sampleDashboard = {
-  id: 102,
-  name: 'Stanleys Dashboard',
-  contents: Root,
-  createdAt: 1558475608,
-  lastSaved: 1558475608,
-  public: true,
-  url: 'bhavika-sharma'
-}
+// const sampleDashboard = {
+//   id: 102,
+//   name: 'Stanleys Dashboard',
+//   contents: Root,
+//   createdAt: 1558475608,
+//   lastSaved: 1558475608,
+//   public: true,
+//   url: 'bhavika-sharma'
+// }
+
+const sampleDashboard = null
 
 export const FETCHING_DASHBOARD = "FETCHING_DASHBOARD"
 export const SET_DASHBOARD = "SET_DASHBOARD"

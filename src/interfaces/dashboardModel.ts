@@ -1,9 +1,8 @@
-import { RootNodeModel } from './nodeModels';
+import { RootNodeModel, SectionNodeModel, NodeModel } from './nodeModels';
 
 export interface DashboardModel {
   id: number;
   name: String;
-  contents: RootNodeModel;
   createdAt: number;
   lastSaved: number;
   public: boolean;
@@ -12,4 +11,13 @@ export interface DashboardModel {
   isFetching?: boolean;
   isSaving?: boolean;
   unsavedChanges?: boolean;
+  contents: {
+    rootSection: string;
+    sections: {
+      [key: string] : SectionNodeModel;
+    }
+    widgets: {
+      [key: string] : NodeModel;
+    }
+  }
 }
