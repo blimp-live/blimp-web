@@ -65,6 +65,7 @@ function removeSection(contents: DashboardContentsModel, id: string) {
         - We want to remove the section and put the child in the section's parent section
   */
 
+  // Base case
   if(id == 'root') {
     return contents;
   }
@@ -98,11 +99,6 @@ function removeSection(contents: DashboardContentsModel, id: string) {
         contents.sections[childId].parentId = parentId;
     } else {
         contents.widgets[childId].parentId = parentId;
-    }
-
-    // Recurse if not at the top level
-    if(contents.sections[parentId].parentId != 'root') {
-        contents = removeSection(contents, contents.sections[id].parentId)
     }
 
     // Remove the section completely
