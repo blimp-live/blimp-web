@@ -1,19 +1,19 @@
 import * as React from "react";
 import styles from "./dashboard.module.css"
-import NumberInput from '../numberInput'
-import { RootNodeModel } from "../../interfaces/nodeModels";
 import { DashboardItem } from "./dashboardItem";
+import { DashboardContentsModel } from "../../interfaces/dashboardModel";
 
 interface Props {
-    contents: RootNodeModel;
+    contents: DashboardContentsModel;
     widgets: any;
 }
 
 export class Dashboard extends React.Component<Props> {
     render(){
+        const rootNode = this.props.contents.sections[this.props.contents.rootSection] || this.props.contents.widgets[this.props.contents.rootSection]
         return (
             <div className={styles.dashboard}>
-                <DashboardItem contents={this.props.contents.children[0]} widgets={this.props.widgets} />
+                <DashboardItem node={rootNode} contents={this.props.contents} widgets={this.props.widgets} />
             </div>
         );
     }
