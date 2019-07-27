@@ -1,9 +1,13 @@
 import { DashboardModel } from '../interfaces/dashboardModel';
+import uuid4 from 'uuid4';
+import {addWidgetToState, removeWidgetFromState} from '../utils/dashboardModelUtils';
 import { SectionNodeModel, WidgetModel } from '../interfaces/nodeModels';
 
 import {
   FETCHING_DASHBOARD,
   SET_DASHBOARD,
+  ADD_WIDGET,
+  REMOVE_WIDGET,
 } from '../actions/dashboardActions';
 
 const widgets = {
@@ -180,6 +184,17 @@ export function dashboardReducer(
         ...state,
         ...action.payload.contents,
         isFetching: false,
+      }
+
+    case ADD_WIDGET:
+      return {
+        ...state,
+        contents: addWidgetToState(state.contents, action.widgetId)
+      }
+    case REMOVE_WIDGET:
+      return {
+        ...state,
+        contents: removeWidgetFromState(state.contents, action.widgetId),
       }
     default:
       return state
