@@ -1,7 +1,7 @@
 import { RootNodeModel, SectionNodeModel, WidgetModel } from '../interfaces/nodeModels';
+import { DashboardContentsModel } from '../interfaces/dashboardModel';
 
-
-export function removeWidgetFromState(contents: any, id: string) {
+export function removeWidgetFromState(contents: DashboardContentsModel, id: string) {
   // Helper to remove a widget from contents that get passed in
 
   // Creating a copy of the original object
@@ -54,7 +54,7 @@ export function removeWidgetFromState(contents: any, id: string) {
   return new_contents;
 }
 
-function removeSection(contents: any, id: string) {
+function removeSection(contents: DashboardContentsModel, id: string) {
   // Two Cases to Consider:
 
   /*
@@ -73,11 +73,11 @@ function removeSection(contents: any, id: string) {
 
     // Call helper to remove the child from the section and redistribute
     // sizing amongst the remaining children
-    contents = removeChildAndReDistributeSizing(contents, contents.sections[id].parent, id);
+    contents = removeChildAndReDistributeSizing(contents, contents.sections[id].parentId, id);
 
     // Recurse if we aren't at the top level
-    if(contents.sections[id].parent != 'root') {
-        contents = removeSection(contents, contents.sections[id].parent)
+    if(contents.sections[id].parentId != 'root') {
+        contents = removeSection(contents, contents.sections[id].parentId)
     }
 
     // Remove the section completely
@@ -86,7 +86,7 @@ function removeSection(contents: any, id: string) {
   } else if(contents.sections[id].children.length == 1) {
 
     // Take current section's one child and put it into the section's parent section
-    let parentId =contents.sections[id].parent;
+    let parentId =contents.sections[id].parentId;
     let currentSectionIndex = contents.sections[parentId].children.indexOf(id);
     let childId = contents.sections[id].children[0];
 
@@ -95,14 +95,14 @@ function removeSection(contents: any, id: string) {
 
     // Checking if the child is a widget or a section
     if(contents.sections[childId] != null) {
-        contents.sections[childId].parent = parentId;
+        contents.sections[childId].parentId = parentId;
     } else {
         contents.widgets[childId].parentId = parentId;
     }
 
     // Recurse if not at the top level
-    if(contents.sections[parentId].parent != 'root') {
-        contents = removeSection(contents, contents.sections[id].parent)
+    if(contents.sections[parentId].parentId != 'root') {
+        contents = removeSection(contents, contents.sections[id].parentId)
     }
 
     // Remove the section completely
@@ -112,7 +112,7 @@ function removeSection(contents: any, id: string) {
   return contents;
 }
 
-function removeChildAndReDistributeSizing(contents: any, section: string, id: string) {
+function removeChildAndReDistributeSizing(contents: DashboardContentsModel, section: string, id: string) {
 
   // This function gets the index of the child in it's parent section
   // It removes the child from the parent section
