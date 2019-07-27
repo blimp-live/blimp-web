@@ -99,7 +99,7 @@ const sections = {
     relativeSize: [0.5, 0.5],
     type: 'SectionModel',
     children: ['live-feed', 'schedule'],
-    parent: 'root',
+    parentId: 'root',
   } as SectionNodeModel,
   'right' : {
     id: 'right',
@@ -107,7 +107,7 @@ const sections = {
     relativeSize: [0.5, 0.5],
     type: 'SectionModel',
     children: ['top-right', 'bottom-right'],
-    parent: 'root',
+    parentId: 'root',
   } as SectionNodeModel,
   'top-right' : {
     id: 'top-right',
@@ -115,7 +115,7 @@ const sections = {
     relativeSize: [0.2, 0.8],
     type: 'SectionModel',
     children: ['top-right-infobar', 'wayfinding'],
-    parent: 'right',
+    parentId: 'right',
   } as SectionNodeModel,
   'top-right-infobar' : {
     id: 'top-right-infobar',
@@ -123,7 +123,7 @@ const sections = {
     relativeSize: [0.5, 0.5],
     type: 'SectionModel',
     children: ['top-right-infobar-left', 'top-right-infobar-right'],
-    parent: 'top-right',
+    parentId: 'top-right',
   } as SectionNodeModel,
   'bottom-right' : {
     id: 'bottom-right',
@@ -131,7 +131,7 @@ const sections = {
     relativeSize: [0.85, 0.15],
     type: 'SectionModel',
     children: ['social', 'bottom'],
-    parent: 'right',
+    parentId: 'right',
   } as SectionNodeModel,
   'top-right-infobar-left' : {
     id: 'top-right-infobar-left',
@@ -139,7 +139,7 @@ const sections = {
     relativeSize: [0.5, 0.5],
     type: 'SectionModel',
     children: ['logo', 'clock'],
-    parent: 'top-right-infobar',
+    parentId: 'top-right-infobar',
   } as SectionNodeModel,
   'top-right-infobar-right' : {
     id: 'top-right-infobar-right',
@@ -147,7 +147,7 @@ const sections = {
     relativeSize: [0.5, 0.5],
     type: 'SectionModel',
     children: ['weather', 'countdown'],
-    parent: 'top-right-infobar',
+    parentId: 'top-right-infobar',
   } as SectionNodeModel,
 }
 
