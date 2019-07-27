@@ -1,7 +1,7 @@
 import { DashboardModel } from '../interfaces/dashboardModel';
 import { RootNodeModel, SectionNodeModel, WidgetModel } from '../interfaces/nodeModels';
 import uuid4 from 'uuid4';
-import {removeWidgetFromState} from '../utils/dashboardModelUtils';
+import {addWidgetToState, removeWidgetFromState} from '../utils/dashboardModelUtils';
 
 import {
   FETCHING_DASHBOARD,
@@ -300,19 +300,14 @@ export function dashboardReducer(
       }
 
     case ADD_WIDGET:
-     /*  contents: {
-         rootSection: 'root',
-         sections: sections,
-         widgets: widgets,
-       },*/
       return {
         ...state,
-        contents: removeWidgetFromState(state.contents, action.widgetId)
+        contents: addWidgetToState(state.contents, action.widgetId)
       }
     case REMOVE_WIDGET:
       return {
         ...state,
-        contents: removeWidgetFromState(action.widgetId, state.contents),
+        contents: removeWidgetFromState(state.contents, action.widgetId),
       }
     default:
       return state
