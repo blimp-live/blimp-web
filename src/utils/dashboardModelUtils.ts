@@ -4,8 +4,18 @@ import { RootNodeModel, SectionNodeModel, WidgetModel } from '../interfaces/node
 export function removeWidgetFromState(contents: any, id: string) {
   // Helper to remove a widget from contents that get passed in
 
-  // This is composed of 2 Steps:
+  // Creating a copy of the original object
+  let rootSection = contents.rootSection;
+  let sections = {...contents.sections};
+  let widgets = {...contents.widgets};
 
+  let new_contents = {
+    rootSection: rootSection,
+    sections: sections,
+    widgets: widgets
+  };
+
+  // This is composed of 2 Steps:
   /*
       Step 1:
         - Find the section that the widget is contained in
@@ -18,17 +28,17 @@ export function removeWidgetFromState(contents: any, id: string) {
         - Remove the Widget from the Widgets list
   */
 
-  for(let section in contents.sections) {
-    if(contents.sections[section].children.includes(id)) {
+  for(let section in new_contents.sections) {
+    if(new_contents.sections[section].children.includes(id)) {
 
       // Call helper to remove the child from the section and redistribute
       // sizing amongst the remaining children
-      contents = removeChildAndReDistributeSizing(contents, section, id);
+      new_contents = removeChildAndReDistributeSizing(new_contents, section, id);
 
       // IF remaining children is 0 or 1 we have to do some extra stuff
       // This will be handled by the 'removeSection' function
-      if(contents.sections[section].children.length <= 1) {
-        contents = removeSection(contents, contents.widgets[id].parentId);
+      if(new_contents.sections[section].children.length <= 1) {
+        new_contents = removeSection(new_contents, new_contents.widgets[id].parentId);
       }
 
       // Given the assumption that a widget can only be in one section
@@ -39,9 +49,9 @@ export function removeWidgetFromState(contents: any, id: string) {
   }
 
   // Finally remove the widget
-  delete contents.widgets[id];
+  delete new_contents.widgets[id];
 
-  return contents;
+  return new_contents;
 }
 
 function removeSection(contents: any, id: string) {
@@ -52,8 +62,7 @@ function removeSection(contents: any, id: string) {
         - Remove the Section, recurse on its parent
 
       Case 2: 1 Child in the Section
-        - We want to remove the section and put the child
-        - in the section's parent section
+        - We want to remove the section and put the child in the section's parent section
   */
 
   if(id == 'root') {
