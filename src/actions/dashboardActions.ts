@@ -1,26 +1,33 @@
-import { createAction } from 'redux-actions';
-import { DashboardModel } from '../interfaces/dashboardModel';
-import { RootNodeModel, NodeModel } from '../interfaces/nodeModels';
-import {root} from '../config/endpoints';
+import { DashboardModel, DashboardContentsModel } from '../interfaces/dashboardModel';
+import { WidgetModel } from '../interfaces/nodeModels';
+import { root } from '../config/endpoints';
 
 const querystring = require('querystring');
 
-// const Root : RootNodeModel = {
-//   children: null,
-//   type: 'RootNode',
-// }
+const sampleContents : DashboardContentsModel = {
+  sections: {},
+  widgets: {
+    'clock': {
+      id: 'clock',
+      widgetType: 'ScrollingText',
+      options: null,
+      version: 1.0,
+      type: 'WidgetModel',
+      parentId: 'top-right-infobar-left'
+    } as WidgetModel,
+  },
+  rootSection: 'clock',
+}
 
-// const sampleDashboard = {
-//   id: 102,
-//   name: 'Stanleys Dashboard',
-//   contents: Root,
-//   createdAt: 1558475608,
-//   lastSaved: 1558475608,
-//   public: true,
-//   url: 'bhavika-sharma'
-// }
-
-const sampleDashboard = null
+const sampleDashboard = {
+  id: 102,
+  name: 'Stanleys Dashboard',
+  contents: sampleContents,
+  createdAt: 1558475608,
+  lastSaved: 1558475608,
+  public: true,
+  url: 'bhavika-sharma'
+}
 
 export const FETCHING_DASHBOARD = "FETCHING_DASHBOARD"
 export const SET_DASHBOARD = "SET_DASHBOARD"

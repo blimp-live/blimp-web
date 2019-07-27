@@ -1,124 +1,10 @@
 import { DashboardModel } from '../interfaces/dashboardModel';
-import { RootNodeModel, SectionNodeModel, WidgetModel } from '../interfaces/nodeModels';
-import uuid4 from 'uuid4';
+import { SectionNodeModel, WidgetModel } from '../interfaces/nodeModels';
 
 import {
   FETCHING_DASHBOARD,
   SET_DASHBOARD,
 } from '../actions/dashboardActions';
-
-// const Root : RootNodeModel = {
-//   type: 'RootNode',
-//   children: [
-//     {
-//       sectionDivision: 'VERTICAL',
-//       relativeSize: [0.5, 0.5],
-//       type: 'SectionModel',
-//       children: [
-//         {
-//           // Left side of dashboard
-//           sectionDivision: 'HORIZONTAL',
-//           relativeSize: [0.5, 0.5],
-//           type: 'SectionModel',
-//           children: [
-//             {
-//               // Live Feed
-//               widgetType: 'IFrameComponent',
-//               options: null,
-//               version: 1.0,
-//               type: 'WidgetModel',
-//             } as WidgetModel,
-//             {
-//               // Schedule
-//               widgetType: 'ScrollingText',
-//               options: null,
-//               version: 1.0,
-//               type: 'WidgetModel',
-//             } as WidgetModel,
-//           ],
-//         } as SectionNodeModel,
-//         {
-//           // Right side of dashboard
-//           sectionDivision: 'HORIZONTAL',
-//           relativeSize: [0.20, 0.30, 0.4, 0.10],
-//           type: 'SectionModel',
-//           children: [
-//             {
-//               // Top infobar
-//               sectionDivision: 'VERTICAL',
-//               relativeSize: [0.5, 0.5],
-//               type: 'SectionModel',
-//               children: [
-//                 {
-//                   // Top row of top infobar
-//                   sectionDivision: 'HORIZONTAL',
-//                   relativeSize: [0.5, 0.5],
-//                   type: 'SectionModel',
-//                   children: [
-//                     {
-//                       // Hack the North Logo
-//                       widgetType: 'HelloWorld',
-//                       options: null,
-//                       version: 1.0,
-//                       type: 'WidgetModel',
-//                     } as WidgetModel,
-//                     {
-//                       // Time
-//                       widgetType: 'Clock',
-//                       options: null,
-//                       version: 1.0,
-//                       type: 'WidgetModel',
-//                     } as WidgetModel,
-//                   ],
-//                 } as SectionNodeModel,
-//                 {
-//                   // Bottom row of top infobar
-//                   sectionDivision: 'HORIZONTAL',
-//                   relativeSize: [0.5, 0.5],
-//                   type: 'SectionModel',
-//                   children: [
-//                     {
-//                       // Weather
-//                       widgetType: 'ExampleComponent',
-//                       options: null,
-//                       version: 1.0,
-//                       type: 'WidgetModel',
-//                     } as WidgetModel,
-//                     {
-//                       // Countdown
-//                       widgetType: 'Countdown',
-//                       options: null,
-//                       version: 1.0,
-//                       type: 'WidgetModel',
-//                     } as WidgetModel,
-//                   ],
-//                 } as SectionNodeModel,
-//               ],
-//             } as SectionNodeModel,
-//             {
-//               widgetType: 'ExampleComponent',
-//               options: null,
-//               version: 1.0,
-//               type: 'WidgetModel',
-//             } as WidgetModel,
-//             {
-//               widgetType: 'HelloWorld',
-//               options: null,
-//               version: 1.0,
-//               type: 'WidgetModel',
-//             } as WidgetModel,
-//             {
-//               widgetType: 'ScrollingText',
-//               options: null,
-//               version: 1.0,
-//               type: 'WidgetModel',
-//             } as WidgetModel,
-//           ],
-//         } as SectionNodeModel,
-//       ],
-//     } as SectionNodeModel,
-//    ],
-// }
 
 const widgets = {
   'live-feed': {
@@ -238,7 +124,7 @@ const sections = {
   'bottom-right' : {
     id: 'bottom-right',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.15, 0.85],
+    relativeSize: [0.85, 0.15],
     type: 'SectionModel',
     children: ['social', 'bottom'],
     parent: 'right',
