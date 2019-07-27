@@ -2,13 +2,13 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState, rootReducer } from "../../reducers";
-import { RootNodeModel } from "../../interfaces/nodeModels";
 import Dashboard from "../../components/dashboard"
+import { DashboardContentsModel } from "../../interfaces/dashboardModel";
 
 interface Props {
   match: any;
   actions: any;
-  contents: any;
+  contents: DashboardContentsModel;
   widgets: any;
 }
 

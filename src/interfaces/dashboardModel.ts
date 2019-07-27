@@ -1,5 +1,15 @@
 import { RootNodeModel, SectionNodeModel, NodeModel } from './nodeModels';
 
+export interface DashboardContentsModel {
+  rootSection: string;
+  sections: {
+    [key: string] : SectionNodeModel;
+  }
+  widgets: {
+    [key: string] : NodeModel;
+  }
+}
+
 export interface DashboardModel {
   id: number;
   name: String;
@@ -11,13 +21,5 @@ export interface DashboardModel {
   isFetching?: boolean;
   isSaving?: boolean;
   unsavedChanges?: boolean;
-  contents: {
-    rootSection: string;
-    sections: {
-      [key: string] : SectionNodeModel;
-    }
-    widgets: {
-      [key: string] : NodeModel;
-    }
-  }
+  contents: DashboardContentsModel;
 }
