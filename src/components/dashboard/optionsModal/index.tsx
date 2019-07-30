@@ -7,7 +7,7 @@ import * as dashboardActions from "../../../actions/dashboardActions";
 
 interface OptionsProps {
   open: boolean;
-  onClose: any; 
+  onClose: any;
   propTypesList: any; //TODO: get list of formatted names - probably have to create a function in each widget // TODO: also create a function in each widget for the expected types for each option
   actions: any;
   widgetId: string;
@@ -25,7 +25,7 @@ class OptionsModal extends React.Component<OptionsProps> {
 
   saveOptions = () => {
     var optionsMap = {};
-    Object.keys(this.props.propTypesList).map(option => { 
+    Object.keys(this.props.propTypesList).map(option => {
           optionsMap[option] = (document.getElementById("option-" + option) as HTMLInputElement).value;
       }
     )
@@ -39,7 +39,7 @@ class OptionsModal extends React.Component<OptionsProps> {
         {
           Object.keys(this.props.propTypesList).map(option => (
             <label key={"option-" + option}>
-              {option + ": "} 
+              {option + ": "}
               <input id={"option-" + option}></input>
             </label>
           ))
