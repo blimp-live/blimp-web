@@ -8,6 +8,7 @@ interface WidgetProps {
   widgetComponent: any;
   index: number;
   data: WidgetModel;
+  style?: React.CSSProperties;
 }
 
 class Widget extends React.Component<WidgetProps> {
@@ -21,16 +22,25 @@ class Widget extends React.Component<WidgetProps> {
     const WidgetComponent = this.props.widgetComponent;
     return (
       <Draggable draggableId={this.props.data.id} index={this.props.index}>
-        {(provided: any, snapshot) => (
-          <div
-            className={styles.container}
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            <WidgetComponent {...this.props.data.options} />
-          </div>
-        )}
+        {(provided: any, snapshot) => {
+          // While dragging, change the size
+          if (snapshot.isDragging) {
+            provided.draggableProps.style = {...provided.draggableProps.style, ...this.props.style, width: '250px', height: '250px'}
+          }
+          else {
+            provided.draggableProps.style = {...provided.draggableProps.style, ...this.props.style}
+          }
+
+          return (
+            <div
+              className={styles.container}
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+            >
+              <WidgetComponent {...this.props.data.options} />
+            </div>
+          )}}
       </Draggable>
     )
   }
