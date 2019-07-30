@@ -7,7 +7,6 @@ interface WidgetProps {
   key: string;
   widgetComponent: any;
   index: number;
-  options: any;
   data: WidgetModel;
 }
 
@@ -29,7 +28,7 @@ class Widget extends React.Component<WidgetProps> {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <WidgetComponent {...this.props.options} />
+            <WidgetComponent {...this.props.data.options} />
           </div>
         )}
       </Draggable>

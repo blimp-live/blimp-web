@@ -78,7 +78,7 @@ function removeSection(contents: DashboardContentsModel, id: string) {
   } else if(contents.sections[id].children.length == 1) {
 
     // Take current section's one child and put it into the section's parent section
-    let parentId =contents.sections[id].parentId;
+    let parentId = contents.sections[id].parentId;
     let currentSectionIndex = contents.sections[parentId].children.indexOf(id);
     let childId = contents.sections[id].children[0];
 
