@@ -1,15 +1,14 @@
 import React from 'react';
-import './Widget.css';
-import Button from '@material-ui/core/Button';
-import styled from 'styled-components';
+import styles from './widget.module.css';
 import { Draggable } from 'react-beautiful-dnd';
-import ReactDOM from 'react-dom';
+import { WidgetModel } from '../../interfaces/nodeModels';
 
 interface WidgetProps {
   key: string;
-  widget: any;
+  widgetComponent: any;
   index: number;
   options: any;
+  data: WidgetModel;
 }
 
 class Widget extends React.Component<WidgetProps> {
@@ -20,8 +19,21 @@ class Widget extends React.Component<WidgetProps> {
   }
 
   generateWidget() {
-    const WidgetComponent = this.props.widget;
-    return <WidgetComponent {...this.props.options}/>
+    const WidgetComponent = this.props.widgetComponent;
+    return (
+      <Draggable draggableId={this.props.data.id} index={this.props.index}>
+        {(provided: any, snapshot) => (
+          <div
+            className={styles.container}
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <WidgetComponent {...this.props.options} />
+          </div>
+        )}
+      </Draggable>
+    )
   }
   // @ts-ignore
   refCallback = element => {
@@ -32,40 +44,10 @@ class Widget extends React.Component<WidgetProps> {
   };
 
   render() {
-    // console.log(this);
-    // const position = ReactDOM?.findDOMNode(this.forwardRef['UniqueElementIdentifier']).getBoundingClientRect(); //outputs <h3> coordinates
-    // console.log(ReactDOM?.findDOMNode(this.props.forwardRef === 'UniqueElementIdentifier')));
-    // return (
-    //   <div ref={this.refCallback}>
-    //     <Draggable draggableId={"widget"+this.props.index} index={this.props.index}>
-    //       {(provided: any, snapshot) => (
-    //         <div
-    //           className='container'
-    //           ref={provided.innerRef}
-    //           {...provided.draggableProps}
-    //           {...provided.dragHandleProps}
-    //         >
-    //           {this.generateWidget()}
-    //         </div>
-    //       )}
-    //     </Draggable>
-    //   </div>
-    // );
     return (
       this.generateWidget()
     );
   }
 }
-// const Widget: React.FC = () => {
-//   return (
-//     <div className="header">
-//       <div className="redo-undo-div">
-//         <Button className='undo-button button'>Undo</Button>
-//         <Button className='redo-button button'>Redo</Button>
-//       </div>
-//       <Button className='save-button button'>Save</Button>
-//     </div>
-//   );
-// }
 
 export default Widget;
