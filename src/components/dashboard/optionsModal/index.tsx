@@ -24,7 +24,7 @@ class OptionsModal extends React.Component<OptionsProps> {
   };
 
   saveOptions = () => {
-    var optionsMap = {};
+    let optionsMap = {};
     Object.keys(this.props.propTypesList).map(option => {
           optionsMap[option] = (document.getElementById("option-" + option) as HTMLInputElement).value;
       }
