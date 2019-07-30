@@ -28,24 +28,15 @@ export function removeWidgetFromState(contents: DashboardContentsModel, id: stri
         - Remove the Widget from the Widgets list
   */
 
-  for(let section in new_contents.sections) {
-    if(new_contents.sections[section].children.includes(id)) {
+  let section = new_contents.widgets[id].parentId;
+  // Call helper to remove the child from the section and redistribute
+  // sizing amongst the remaining children
+  new_contents = removeChildAndReDistributeSizing(new_contents, section, id);
 
-      // Call helper to remove the child from the section and redistribute
-      // sizing amongst the remaining children
-      new_contents = removeChildAndReDistributeSizing(new_contents, section, id);
-
-      // IF remaining children is 0 or 1 we have to do some extra stuff
-      // This will be handled by the 'removeSection' function
-      if(new_contents.sections[section].children.length <= 1) {
-        new_contents = removeSection(new_contents, new_contents.widgets[id].parentId);
-      }
-
-      // Given the assumption that a widget can only be in one section
-      // We break to save some time
-      break;
-    }
-
+  // IF remaining children is 0 or 1 we have to do some extra stuff
+  // This will be handled by the 'removeSection' function
+  if(new_contents.sections[section].children.length <= 1) {
+    new_contents = removeSection(new_contents, new_contents.widgets[id].parentId);
   }
 
   // Finally remove the widget
