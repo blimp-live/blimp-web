@@ -10,7 +10,6 @@ import {
   REMOVE_WIDGET,
   EDIT_WIDGET,
 } from '../actions/dashboardActions';
-import { optionalCallExpression } from '@babel/types';
 
 const widgets = {
   'live-feed': {
