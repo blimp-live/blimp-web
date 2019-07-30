@@ -13,7 +13,7 @@ import {
 const widgets = {
   'live-feed': {
     id: 'live-feed',
-    widgetType: 'ScrollingText',
+    widgetType: 'Clock',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -21,7 +21,7 @@ const widgets = {
   } as WidgetModel,
   'schedule': {
     id: 'schedule',
-    widgetType: 'ScrollingText',
+    widgetType: 'Clock',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -29,7 +29,7 @@ const widgets = {
   } as WidgetModel,
   'logo': {
     id: 'logo',
-    widgetType: 'ScrollingText',
+    widgetType: 'Countdown',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -37,7 +37,7 @@ const widgets = {
   } as WidgetModel,
   'weather': {
     id: 'weather',
-    widgetType: 'ScrollingText',
+    widgetType: 'ExampleComponent',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -45,7 +45,7 @@ const widgets = {
   } as WidgetModel,
   'clock': {
     id: 'clock',
-    widgetType: 'ScrollingText',
+    widgetType: 'HelloWorld',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -53,7 +53,7 @@ const widgets = {
   } as WidgetModel,
   'countdown': {
     id: 'countdown',
-    widgetType: 'ScrollingText',
+    widgetType: 'IFrameComponent',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -69,7 +69,7 @@ const widgets = {
   } as WidgetModel,
   'social': {
     id: 'social',
-    widgetType: 'ScrollingText',
+    widgetType: 'Clock',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -77,7 +77,7 @@ const widgets = {
   } as WidgetModel,
   'bottom': {
     id: 'bottom',
-    widgetType: 'ScrollingText',
+    widgetType: 'Countdown',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
