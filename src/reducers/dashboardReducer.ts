@@ -1,6 +1,10 @@
 import { DashboardModel } from '../interfaces/dashboardModel';
 import uuid4 from 'uuid4';
-import {addWidgetToState, removeWidgetFromState} from '../utils/dashboardModelUtils';
+import {
+  addWidgetToState,
+  removeWidgetFromState,
+  moveWidget
+} from '../utils/dashboardModelUtils';
 import { SectionNodeModel, WidgetModel } from '../interfaces/nodeModels';
 
 import {
@@ -9,6 +13,7 @@ import {
   ADD_WIDGET,
   REMOVE_WIDGET,
   EDIT_WIDGET,
+  MOVE_WIDGET,
 } from '../actions/dashboardActions';
 
 const widgets = {
@@ -22,7 +27,7 @@ const widgets = {
   } as WidgetModel,
   'schedule': {
     id: 'schedule',
-    widgetType: 'Clock',
+    widgetType: 'ScrollingText',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -189,12 +194,29 @@ export function dashboardReducer(
     case ADD_WIDGET:
       return {
         ...state,
-        contents: addWidgetToState(state.contents, action.widgetId)
+        contents: addWidgetToState(
+          state.contents,
+          action.widgetId,
+          action.parentId,
+          action.index,
+        )
       }
     case REMOVE_WIDGET:
       return {
         ...state,
         contents: removeWidgetFromState(state.contents, action.widgetId),
+      }
+    case MOVE_WIDGET:
+      return {
+        ...state,
+        contents: moveWidget(
+          state.contents,
+          action.sourceIndex,
+          action.sourceContainerId,
+          action.destinationIndex,
+          action.destinationContainerId,
+          action.widgetId,
+        ),
       }
     case EDIT_WIDGET:
       return {

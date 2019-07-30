@@ -45,6 +45,31 @@ export function removeWidgetFromState(contents: DashboardContentsModel, id: stri
   return new_contents;
 }
 
+export function moveWidget(
+  contents: DashboardContentsModel,
+  sourceIndex: number,
+  sourceContainerId: string,
+  destinationIndex: number,
+  destinationContainerId: string,
+  widgetId: string
+) {
+  let rootSection = contents.rootSection;
+  let sections = {...contents.sections};
+  let widgets = {...contents.widgets};
+  let newContents : DashboardContentsModel = {rootSection, sections, widgets};
+
+  newContents = removeChildAndReDistributeSizing(newContents, sourceContainerId, widgetId);
+  newContents = addWidgetToState(newContents, destinationContainerId, widgetId, destinationIndex)
+
+  // IF remaining children is 0 or 1 we have to do some extra stuff
+  // This will be handled by the 'removeSection' function
+  if (sections[sourceContainerId].children.length <= 1) {
+    newContents = removeSection(newContents, sourceContainerId);
+  }
+
+  return newContents;
+}
+
 function removeSection(contents: DashboardContentsModel, id: string) {
   // Two Cases to Consider:
 
@@ -100,7 +125,6 @@ function removeSection(contents: DashboardContentsModel, id: string) {
 }
 
 function removeChildAndReDistributeSizing(contents: DashboardContentsModel, section: string, id: string) {
-
   // This function gets the index of the child in it's parent section
   // It removes the child from the parent section
   // It gets the current relative sizing of the child
@@ -130,9 +154,29 @@ function removeChildAndReDistributeSizing(contents: DashboardContentsModel, sect
   return contents;
 }
 
-export function addWidgetToState(contents: any, parentId: string) {
-  // Given a Parent ID we will add a widget to the parent
+export function addWidgetToState(contents: any, parentId: string, widgetId: string, index: number) {
+  // Current this handles adding an existing widget to an existing section
+  // TODO: handle other possibilities?
 
-  // TODO: How do we handle section splitting?
-  return contents;
+  let rootSection = contents.rootSection;
+  let sections = {...contents.sections};
+  let widgets = {...contents.widgets};
+  let newContents : DashboardContentsModel = {rootSection, sections, widgets};
+
+  let section = sections[parentId];
+  let widget = widgets[widgetId];
+
+  // Add widget to section list children at specified position
+  section.children.splice(index, 0, widgetId);
+  // Initialize relative size value to 0
+  section.relativeSize.splice(index, 0, 1/section.children.length);
+
+  // Make space proportionally for the new widget
+  for (let i = 0; i < section.relativeSize.length; i++) {
+    if (i !== index) {
+      section.relativeSize[i] = section.relativeSize[i] * (1 - (1/section.children.length));
+    }
+  }
+
+  return newContents;
 }

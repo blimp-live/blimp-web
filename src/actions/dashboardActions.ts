@@ -34,6 +34,7 @@ export const SET_DASHBOARD = "SET_DASHBOARD"
 export const ADD_WIDGET = "ADD_WIDGET";
 export const REMOVE_WIDGET = "REMOVE_WIDGET";
 export const EDIT_WIDGET = "EDIT_WIDGET"
+export const MOVE_WIDGET = "MOVE_WIDGET"
 
 export function fetchingDashboard() {
   return {
@@ -90,9 +91,16 @@ export function saveDashboard(id: number, name: String, contents: DashboardModel
   }
 }
 
-export function addWidgetAfter() {
+export function addWidget(
+  widgetId: string,
+  parentId: string,
+  index: number,
+) {
   return {
     type: ADD_WIDGET,
+    widgetId: widgetId,
+    parentId: parentId,
+    index: index,
   }
 }
 
@@ -101,6 +109,23 @@ export function removeWidget(widgetId: String) {
   // All this does is it removes the from the contents/model
   return {
     type: REMOVE_WIDGET,
+    widgetId: widgetId
+  }
+}
+
+export function moveWidget(
+  sourceIndex: number,
+  sourceContainerId: string,
+  destinationIndex: number,
+  destinationContainerId: string,
+  widgetId: string,
+) {
+  return {
+    type: MOVE_WIDGET,
+    sourceIndex: sourceIndex,
+    sourceContainerId: sourceContainerId,
+    destinationIndex: destinationIndex,
+    destinationContainerId: destinationContainerId,
     widgetId: widgetId
   }
 }

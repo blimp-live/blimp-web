@@ -48,7 +48,13 @@ export class Dashboard extends React.Component<Props> {
       return;
     }
 
-    this.props.actions.removeWidget(draggableId);
+    this.props.actions.moveWidget(
+      source.index,
+      source.droppableId,
+      destination.index,
+      destination.droppableId,
+      draggableId,
+    );
   }
 
   render(){
