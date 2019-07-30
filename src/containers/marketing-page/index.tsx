@@ -3,16 +3,39 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState, rootReducer } from "../../reducers";
 import { Link } from "react-router-dom"
+import "../../themes/themes.css";
+import "../../themes/styles.css";
+import { changeTheme } from "../../themes/changeTheme";
 
 interface Props {
   actions: any;
 }
 
-export class MarketingPage extends React.Component<Props> {
+interface State {
+  theme: string;
+}
+
+export class MarketingPage extends React.Component<Props, State> {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      theme: "dark"
+    };
+    this.changeTheme = this.changeTheme.bind(this);
+  }
+
+  changeTheme() {
+    if(this.state.theme == "dark") {
+      this.setState({theme: "light"});
+    } else {
+      this.setState({theme: "dark"});
+    }
+  }
   render(){
     return (
-      <div>
-        <nav>
+      <div className={"theme--"+ this.state.theme}>
+        <nav className={"theme--" + this.state.theme}>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -32,6 +55,7 @@ export class MarketingPage extends React.Component<Props> {
           </ul>
         </nav>
         <h1>Welcome Home!</h1>
+        <button className="button" onClick={this.changeTheme}>Click Me!</button>
       </div>
     );
   }

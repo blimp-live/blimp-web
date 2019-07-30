@@ -1,4 +1,15 @@
 /* Setting values for classes */
-button {
 
+.button {
+  border: 1px solid;
+  border-color: var(--base-3);
+  background-image: none;
+  background-color: var(--base-2);
+  color: var(--base-4);
+  padding: .5rem;
+  font-size: 1rem;
+}
+
+div {
+  background-color: var(--base-4);
 }
