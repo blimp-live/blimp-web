@@ -8,6 +8,7 @@ import {
   SET_DASHBOARD,
   ADD_WIDGET,
   REMOVE_WIDGET,
+  EDIT_WIDGET,
 } from '../actions/dashboardActions';
 
 const widgets = {
@@ -185,7 +186,6 @@ export function dashboardReducer(
         ...action.payload.contents,
         isFetching: false,
       }
-
     case ADD_WIDGET:
       return {
         ...state,
@@ -195,6 +195,20 @@ export function dashboardReducer(
       return {
         ...state,
         contents: removeWidgetFromState(state.contents, action.widgetId),
+      }
+    case EDIT_WIDGET:
+      return {
+        ...state,
+        contents: {
+          ...state.contents,
+          widgets: {
+            ...state.contents.widgets,
+            [action.widgetId]: {
+              ...state.contents.widgets[action.widgetId],
+              options: action.options,
+            }
+          }
+        }
       }
     default:
       return state

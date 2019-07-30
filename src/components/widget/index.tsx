@@ -9,6 +9,7 @@ interface WidgetProps {
   key: string;
   widget: any;
   index: number;
+  options: any;
 }
 
 class Widget extends React.Component<WidgetProps> {
@@ -20,7 +21,7 @@ class Widget extends React.Component<WidgetProps> {
 
   generateWidget() {
     const WidgetComponent = this.props.widget;
-    return <WidgetComponent/>
+    return <WidgetComponent {...this.props.options}/>
   }
   // @ts-ignore
   refCallback = element => {
