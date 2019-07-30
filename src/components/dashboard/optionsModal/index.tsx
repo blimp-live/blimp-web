@@ -1,36 +1,35 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
-
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+import * as dashboardActions from "../../../actions/dashboardActions";
 
 interface OptionsProps {
   open: boolean;
-  onClose: any; //check if there is a function type
-  propTypesList: any; //check if there is a map type //TODO IN FUTURE: get list of formatted names - probably have to create a function in each widget
+  onClose: any; 
+  propTypesList: any; //TODO: get list of formatted names - probably have to create a function in each widget // TODO: also create a function in each widget for the expected types for each option
+  actions: any;
+  widgetId: string;
 }
 
 class OptionsModal extends React.Component<OptionsProps> {
   // @ts-ignore
   constructor(OptionsProps) {
     super(OptionsProps);
-    // this.state = React.createRef<Widget>();
   }
-
-  // const { onClose, open } = this.props;
 
   handleClose = () => {
     this.props.onClose();
   };
 
   saveOptions = () => {
-    var optionsList = [];
+    var optionsMap = {};
     Object.keys(this.props.propTypesList).map(option => { 
-          optionsList.push((document.getElementById("option-" + option) as HTMLInputElement).value);
+          optionsMap[option] = (document.getElementById("option-" + option) as HTMLInputElement).value;
       }
     )
-    console.log(optionsList)
+    this.props.actions.editWidget(optionsMap, this.props.widgetId)
   };
 
   render() {
@@ -38,28 +37,29 @@ class OptionsModal extends React.Component<OptionsProps> {
       <Dialog onClose={this.handleClose} open={this.props.open}>
         <DialogTitle id="modal-title">Set Widget Options</DialogTitle>
         {
-          // this.props.propTypesList.map(widget => (
-          //   <div> widget </div>
-          //   )
-          // )
           Object.keys(this.props.propTypesList).map(option => (
-            <div> 
+            <label key={"option-" + option}>
               {option + ": "} 
               <input id={"option-" + option}></input>
-            </div>
+            </label>
           ))
         }
         <button onClick={this.saveOptions}> Save Options</button>
-        {/* <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent> */}
       </Dialog>
     );
   }
 }
 
+const actions: any = Object.assign({}, dashboardActions);
 
-export default OptionsModal;
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(OptionsModal);
+

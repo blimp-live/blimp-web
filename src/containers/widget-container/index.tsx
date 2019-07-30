@@ -5,12 +5,13 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState, rootReducer } from "../../reducers";
 import "./index.css"
+import { WidgetModel } from "../../interfaces/nodeModels";
 
 interface Props {
     key: string;
     widget: any;
     index: number;
-    options: any;
+    data: WidgetModel;
 }
 
 interface State {
@@ -39,14 +40,13 @@ export class WidgetContainer extends React.Component<Props, State> {
   };
 
   render(){
-    // const widget = this.props.node as WidgetModel;
     return (
       <div>
         <div>
           <button className="options-button" onClick={this.handleClickOpen}>...</button>
-          <OptionsModal open={this.state.modalOpen} onClose={this.handleClose} propTypesList={this.props.widget.propTypes}/>
+          <OptionsModal open={this.state.modalOpen} onClose={this.handleClose} propTypesList={this.props.widget.propTypes} widgetId={this.props.data.id} />
         </div>
-        <Widget key={this.props.key} index={this.props.index} widget={this.props.widget} options={this.props.widget.options} />
+        <Widget key={this.props.key} index={this.props.index} widget={this.props.widget} options={this.props.data.options} />
       </div>
     );
   }
