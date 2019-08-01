@@ -14,7 +14,7 @@ import {
 const widgets = {
   'live-feed': {
     id: 'live-feed',
-    widgetType: 'ScrollingText',
+    widgetType: 'Clock',
     options: null,
     version: 1.0,
     type: 'WidgetModel',

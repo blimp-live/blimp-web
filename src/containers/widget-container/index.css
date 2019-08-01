@@ -5,3 +5,12 @@
   color: white;
   font-weight: bold;
 }
+
+.remove-button {
+  border: transparent;
+  padding: 8px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  float:right;
+}
