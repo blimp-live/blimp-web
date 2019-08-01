@@ -128,12 +128,14 @@ export function removeWidget(widgetId: String) {
 }
 
 /**
- * Moves a widget from one section to another
+ * Moves an existing widget from one existing section to another existing section
  * Mainly called when dragging and dropping
  *
- * @param {string} widgetId - Id of a widget that exists in the store
- * @param {string} parentId - Id of a section that exists in the store
- * @param {number} index - Index of where the widget should appear in the section
+ * @param {number} sourceIndex - The position of the widget inside the source section
+ * @param {string} sourceContainerId - Id of the section that the widget was moved from
+ * @param {number} destinationIndex - The position of the widget inside the destination section
+ * @param {string} destinationContainerId - Id of the section that the widget was moved to
+ * @param {string} widgetId - Id of an existing widget in the store
  * @return {string} An action dispatch
  *
  * @example
