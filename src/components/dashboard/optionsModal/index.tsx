@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import * as dashboardActions from "../../../actions/dashboardActions";
 
 interface OptionsProps {
@@ -34,18 +39,26 @@ class OptionsModal extends React.Component<OptionsProps> {
 
   render() {
     return (
-      <Dialog onClose={this.handleClose} open={this.props.open}>
+      <Dialog open={this.props.open} onClose={this.handleClose}>
         <DialogTitle id="modal-title">Set Widget Options</DialogTitle>
-        {
-           (this.props.propTypesList && typeof Object.keys(this.props.propTypesList) !== 'undefined' && Object.keys(this.props.propTypesList).length > 0) &&
-            Object.keys(this.props.propTypesList).map(option => (
-              <label key={"option-" + option}>
-                {option + ": "}
-                <input id={"option-" + option}></input>
-              </label>
-          ))
-        }
-        <button onClick={this.saveOptions}> Save Options</button>
+        <DialogContent>
+          {
+             (this.props.propTypesList && typeof Object.keys(this.props.propTypesList) !== 'undefined' && Object.keys(this.props.propTypesList).length > 0) &&
+              Object.keys(this.props.propTypesList).map(option => (
+                <label key={"option-" + option}>
+                  <TextField
+                    id={"option-" + option}
+                    label={option + ": "}
+                    fullWidth
+                  />
+                </label>
+            ))
+          }
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.handleClose} color="secondary">Close</Button>
+          <Button onClick={this.saveOptions} color="primary">Save Options</Button>
+        </DialogActions>
       </Dialog>
     );
   }
