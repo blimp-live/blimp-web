@@ -8,9 +8,11 @@ import { connect } from "react-redux";
 import { RootState } from "../../reducers";
 import { Dispatch, bindActionCreators } from "redux";
 import { Drawer } from '@material-ui/core';
+import Fab from '@material-ui/core/Fab';
 import { WidgetList } from '../../containers/widget-list';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import MenuIcon from '@material-ui/icons/Menu';
 import * as dashboardActions from "../../actions/dashboardActions";
 
 interface Props {
@@ -19,7 +21,25 @@ interface Props {
   actions: any;
 }
 
-export class Dashboard extends React.Component<Props> {
+interface State {
+  widgetListOpen: boolean
+}
+
+export class Dashboard extends React.Component<Props, State> {
+
+  constructor(props) {
+    super(props);
+    this.toggleWidgetList = this.toggleWidgetList.bind(this);
+    this.state = {
+      widgetListOpen: true
+    };
+  }
+
+  toggleWidgetList() {
+    this.setState({widgetListOpen: !this.state.widgetListOpen})
+
+  }
+
   onDragEnd = result => {
     // Sample result format
     // {
@@ -77,6 +97,7 @@ export class Dashboard extends React.Component<Props> {
         <div className={styles.headerButtons}>
           <Button variant="contained" className={styles.saveButton} onClick={() => this.saveDashboard()}>Save</Button>
           <Button variant="contained" className={styles.loadButton} onClick={() => this.loadDashboard()}>Load</Button>
+          <Fab onMouseEnter={this.toggleWidgetList}><MenuIcon/></Fab>
         </div>
         <DragDropContext
             onDragEnd={this.onDragEnd}
@@ -85,7 +106,17 @@ export class Dashboard extends React.Component<Props> {
             <DashboardItem node={rootNode} contents={this.props.contents} widgets={this.props.widgets} index={0} />
           </div>
         </DragDropContext>
-      </div>
+        <Drawer
+             anchor="right"
+             variant="persistent"
+             open={this.state.widgetListOpen}
+             onClose={this.toggleWidgetList}>
+              <IconButton onClick={this.toggleWidgetList}>
+              <ChevronRightIcon/>
+             </IconButton>
+              <WidgetList actions={false}/>
+            </Drawer>
+      </DragDropContext>
     );
   }
 }

@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState } from "../../reducers";
 
+
 interface WidgetProps {
   key: string;
   widgetComponent: any;
@@ -70,8 +71,6 @@ class Widget extends React.Component<WidgetProps, WidgetState> {
   // @ts-ignore
   refCallback = element => {
     if (element) {
-      console.log("CALLBACK IS HAPPENING");
-      console.log(element.getBoundingClientRect());
     }
   };
 
