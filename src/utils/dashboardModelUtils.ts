@@ -20,7 +20,7 @@ export function removeWidgetFromState(contents: DashboardContentsModel, id: stri
   let section = contents.widgets[id].parentId;
   // Call helper to remove the child from the section and redistribute
   // sizing amongst the remaining children
-  // contents = removeChildAndReDistributeSizing(contents, section, id);
+  removeChildAndReDistributeSizing(contents.sections, section, id);
 
   // IF remaining children is 0 or 1 we have to do some extra stuff
   // This will be handled by the 'removeSection' function
