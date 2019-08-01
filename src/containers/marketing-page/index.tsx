@@ -32,6 +32,7 @@ export class MarketingPage extends React.Component<Props, State> {
       this.setState({theme: "dark"});
     }
   }
+
   render(){
     return (
       <div className={"theme--"+ this.state.theme}>
