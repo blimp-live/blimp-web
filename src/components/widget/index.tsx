@@ -1,27 +1,71 @@
 import React from 'react';
-import './Widget.css';
-import Button from '@material-ui/core/Button';
-import styled from 'styled-components';
+import styles from './widget.module.css';
 import { Draggable } from 'react-beautiful-dnd';
-import ReactDOM from 'react-dom';
+import { WidgetModel } from '../../interfaces/nodeModels';
+import OptionsModal from '../dashboard/optionsModal';
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { RootState } from "../../reducers";
 
 interface WidgetProps {
   key: string;
-  widget: any;
+  widgetComponent: any;
   index: number;
-  options: any;
+  data: WidgetModel;
+  style?: React.CSSProperties;
 }
 
-class Widget extends React.Component<WidgetProps> {
-  // @ts-ignore
+interface WidgetState {
+  modalOpen: boolean;
+}
+
+class Widget extends React.Component<WidgetProps, WidgetState> {
   constructor(WidgetProps) {
     super(WidgetProps);
-    this.state = React.createRef<Widget>();
+    this.state = {
+      modalOpen: false
+    };
   }
 
+  handleClickOpen = () => {
+    this.setState({
+      modalOpen: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      modalOpen: false
+    });
+  };
+
   generateWidget() {
-    const WidgetComponent = this.props.widget;
-    return <WidgetComponent {...this.props.options}/>
+    const WidgetComponent = this.props.widgetComponent;
+    return (
+      <Draggable draggableId={this.props.data.id} index={this.props.index}>
+        {(provided: any, snapshot) => {
+          // While dragging, change the size
+          if (snapshot.isDragging) {
+            provided.draggableProps.style = {...provided.draggableProps.style, ...this.props.style, width: '250px', height: '250px'}
+          }
+          else {
+            provided.draggableProps.style = {...provided.draggableProps.style, ...this.props.style}
+          }
+
+          return (
+            <div
+              className={styles.container}
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+            >
+              <button className={styles.optionsButton} onClick={this.handleClickOpen}>...</button>
+              <OptionsModal open={this.state.modalOpen} onClose={this.handleClose} propTypesList={this.props.widgetComponent.propTypes} widgetId={this.props.data.id} />
+              <WidgetComponent {...this.props.data.options} />
+            </div>
+          )}}
+      </Draggable>
+    )
   }
   // @ts-ignore
   refCallback = element => {
@@ -32,40 +76,24 @@ class Widget extends React.Component<WidgetProps> {
   };
 
   render() {
-    // console.log(this);
-    // const position = ReactDOM?.findDOMNode(this.forwardRef['UniqueElementIdentifier']).getBoundingClientRect(); //outputs <h3> coordinates
-    // console.log(ReactDOM?.findDOMNode(this.props.forwardRef === 'UniqueElementIdentifier')));
-    // return (
-    //   <div ref={this.refCallback}>
-    //     <Draggable draggableId={"widget"+this.props.index} index={this.props.index}>
-    //       {(provided: any, snapshot) => (
-    //         <div
-    //           className='container'
-    //           ref={provided.innerRef}
-    //           {...provided.draggableProps}
-    //           {...provided.dragHandleProps}
-    //         >
-    //           {this.generateWidget()}
-    //         </div>
-    //       )}
-    //     </Draggable>
-    //   </div>
-    // );
     return (
       this.generateWidget()
     );
   }
 }
-// const Widget: React.FC = () => {
-//   return (
-//     <div className="header">
-//       <div className="redo-undo-div">
-//         <Button className='undo-button button'>Undo</Button>
-//         <Button className='redo-button button'>Redo</Button>
-//       </div>
-//       <Button className='save-button button'>Save</Button>
-//     </div>
-//   );
-// }
 
-export default Widget;
+const actions: any = Object.assign({}, null);
+
+function mapStateToProps(state: RootState) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Widget);

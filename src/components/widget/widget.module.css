@@ -1,0 +1,17 @@
+.container {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 2.5px;
+  box-sizing: border-box;
+  transition: height 0.1s ease, width 0.1s ease;
+}
+
+.optionsButton {
+  border: transparent;
+  padding: 8px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+}

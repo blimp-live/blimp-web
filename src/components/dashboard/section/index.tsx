@@ -1,10 +1,13 @@
 import * as React from "react";
 import { NodeModel, SectionDivision } from "../../../interfaces/nodeModels";
 import styles from "./section.module.css";
+import { Droppable } from "react-beautiful-dnd";
 
 interface Props {
   relativeSize: number[];
   sectionDivision: SectionDivision;
+  id: string;
+  style?: React.CSSProperties;
 }
 
 export class Section extends React.Component<Props> {
@@ -12,30 +15,18 @@ export class Section extends React.Component<Props> {
     const children = this.props.children
     const relativeSize = this.props.relativeSize
     return (
-      <div className={`${styles.section} ${this.props.sectionDivision === 'HORIZONTAL' ? styles.sectionHorizontal : styles.sectionVertical} `}>
-        {React.Children.map(children, (child, i) => {
-          // Generate a random colour
-          let colour = [];
-          for (var j = 0; j < 3; j++) {
-            colour.push(Math.floor(Math.random()*256));
-          }
-          return (
-            <div style={{
-              backgroundColor: `rgb(${colour[0]}, ${colour[1]}, ${colour[2]})`,
-              // Sizing logic
-              flexBasis: `${relativeSize[i]*100}%`,
-              // When the section is divided horizontally
-              // height is constrained, but width takes up 100% of available space
-              // vice versa for the vertical case
-              width: this.props.sectionDivision == 'HORIZONTAL' ? '100%' : `${relativeSize[i]*100}%`,
-              height: this.props.sectionDivision == 'VERTICAL' ? '100%' : `${relativeSize[i]*100}%`,
-              overflow: 'hidden',
-            }}>
-              {child}
-            </div>
-          )
-        })}
-      </div>
+      <Droppable droppableId={this.props.id}>
+        { provided => (
+          <div
+            className={`${styles.section} ${this.props.sectionDivision === 'HORIZONTAL' ? styles.sectionHorizontal : styles.sectionVertical} `}
+            style={this.props.style}
+            ref={provided.innerRef}
+            {...provided.droppableProps}>
+            {this.props.children}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
     );
   }
 }

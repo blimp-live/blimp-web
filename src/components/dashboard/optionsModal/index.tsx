@@ -37,11 +37,12 @@ class OptionsModal extends React.Component<OptionsProps> {
       <Dialog onClose={this.handleClose} open={this.props.open}>
         <DialogTitle id="modal-title">Set Widget Options</DialogTitle>
         {
-          Object.keys(this.props.propTypesList).map(option => (
-            <label key={"option-" + option}>
-              {option + ": "}
-              <input id={"option-" + option}></input>
-            </label>
+           (this.props.propTypesList && typeof Object.keys(this.props.propTypesList) !== 'undefined' && Object.keys(this.props.propTypesList).length > 0) &&
+            Object.keys(this.props.propTypesList).map(option => (
+              <label key={"option-" + option}>
+                {option + ": "}
+                <input id={"option-" + option}></input>
+              </label>
           ))
         }
         <button onClick={this.saveOptions}> Save Options</button>
@@ -62,4 +63,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(OptionsModal);
-
