@@ -40,6 +40,9 @@ export function moveWidget(
   destinationContainerId: string,
   widgetId: string
 ) {
+  // TODO: There's no need to redistribute sizing if it's the same container
+  // E.g. moving something in the same section shouldn't resize it
+  // Noting this down to maybe fix in the future
   removeChildAndReDistributeSizing(contents.sections, sourceContainerId, widgetId)
   addWidgetToState(contents, destinationContainerId, widgetId, destinationIndex)
 
