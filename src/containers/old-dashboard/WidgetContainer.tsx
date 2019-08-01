@@ -1,8 +1,6 @@
 import React from 'react';
 import './WidgetContainer.css';
-import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
-import ReactDOM from 'react-dom';
 
 interface WidgetContainerProps {
   widgetID: any;

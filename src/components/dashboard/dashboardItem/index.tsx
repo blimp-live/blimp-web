@@ -1,9 +1,8 @@
 import * as React from "react";
 import { NodeModel, WidgetModel, SectionNodeModel } from "../../../interfaces/nodeModels";
-import Widget from "../../../components/widget";
 import Section from "../section";
 import { DashboardContentsModel } from "../../../interfaces/dashboardModel";
-import { Draggable } from 'react-beautiful-dnd';
+import Widget from "../../widget";
 
 interface Props {
   contents: DashboardContentsModel;

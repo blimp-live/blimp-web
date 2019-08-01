@@ -5,3 +5,12 @@
   margin: 2.5px;
   box-sizing: border-box;
 }
+
+.optionsButton {
+  border: transparent;
+  padding: 8px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+}

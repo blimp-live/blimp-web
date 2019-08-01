@@ -2,6 +2,10 @@ import React from 'react';
 import styles from './widget.module.css';
 import { Draggable } from 'react-beautiful-dnd';
 import { WidgetModel } from '../../interfaces/nodeModels';
+import OptionsModal from '../dashboard/optionsModal';
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { RootState } from "../../reducers";
 
 interface WidgetProps {
   key: string;
@@ -11,12 +15,29 @@ interface WidgetProps {
   style?: React.CSSProperties;
 }
 
-class Widget extends React.Component<WidgetProps> {
-  // @ts-ignore
+interface WidgetState {
+  modalOpen: boolean;
+}
+
+class Widget extends React.Component<WidgetProps, WidgetState> {
   constructor(WidgetProps) {
     super(WidgetProps);
-    this.state = React.createRef<Widget>();
+    this.state = {
+      modalOpen: false
+    };
   }
+
+  handleClickOpen = () => {
+    this.setState({
+      modalOpen: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      modalOpen: false
+    });
+  };
 
   generateWidget() {
     const WidgetComponent = this.props.widgetComponent;
@@ -38,6 +59,8 @@ class Widget extends React.Component<WidgetProps> {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
             >
+              <button className={styles.optionsButton} onClick={this.handleClickOpen}>...</button>
+              <OptionsModal open={this.state.modalOpen} onClose={this.handleClose} propTypesList={this.props.widgetComponent.propTypes} widgetId={this.props.data.id} />
               <WidgetComponent {...this.props.data.options} />
             </div>
           )}}
@@ -59,4 +82,18 @@ class Widget extends React.Component<WidgetProps> {
   }
 }
 
-export default Widget;
+const actions: any = Object.assign({}, null);
+
+function mapStateToProps(state: RootState) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Widget);
