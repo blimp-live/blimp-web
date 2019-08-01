@@ -91,6 +91,18 @@ export function saveDashboard(id: number, name: String, contents: DashboardModel
   }
 }
 
+/**
+ * Adds an existing widget to an existing section
+ *
+ * @param {string} widgetId - Id of a widget that exists in the store
+ * @param {string} parentId - Id of a section that exists in the store
+ * @param {number} index - Index of where the widget should appear in the section
+ * @return {string} An action dispatch
+ *
+ * @example
+ *
+ *     addWidget('live-feed', 'left-section', 0)
+ */
 export function addWidget(
   widgetId: string,
   parentId: string,
@@ -113,6 +125,19 @@ export function removeWidget(widgetId: String) {
   }
 }
 
+/**
+ * Moves a widget from one section to another
+ * Mainly called when dragging and dropping
+ *
+ * @param {string} widgetId - Id of a widget that exists in the store
+ * @param {string} parentId - Id of a section that exists in the store
+ * @param {number} index - Index of where the widget should appear in the section
+ * @return {string} An action dispatch
+ *
+ * @example
+ *
+ *     moveWidget(0, 'left-section', 1, 'right-section', 'live-feed')
+ */
 export function moveWidget(
   sourceIndex: number,
   sourceContainerId: string,
