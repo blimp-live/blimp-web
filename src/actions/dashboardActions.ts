@@ -35,6 +35,8 @@ export const ADD_WIDGET = "ADD_WIDGET";
 export const REMOVE_WIDGET = "REMOVE_WIDGET";
 export const EDIT_WIDGET = "EDIT_WIDGET"
 export const MOVE_WIDGET = "MOVE_WIDGET"
+export const UNDO = "UNDO";
+export const REDO = "REDO";
 
 export function fetchingDashboard() {
   return {
@@ -181,5 +183,17 @@ export function editWidget(options: any, widgetId: string) {
     type: EDIT_WIDGET,
     widgetId: widgetId,
     options: options,
+  }
+}
+
+function undo() {
+  return {
+    type: UNDO,
+  }
+}
+
+function redo() {
+  return {
+    type: REDO,
   }
 }
