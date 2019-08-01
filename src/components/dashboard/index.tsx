@@ -37,6 +37,7 @@ export class Dashboard extends React.Component<Props, State> {
     };
   }
 
+  // This is used for clickaways (we want to force closure)
   closeWidgetList() {
     this.setState({widgetListOpen: false})
   }
