@@ -106,6 +106,9 @@ export class Dashboard extends React.Component<Props, State> {
           <Button variant="contained" className={styles.loadButton} onClick={() => this.loadDashboard()}>Load</Button>
           <Fab onMouseEnter={this.toggleWidgetList}><MenuIcon/></Fab>
         </div>
+        <DragDropContext
+            onDragEnd={this.onDragEnd}
+        >
         <ClickAwayListener onClickAway={this.closeWidgetList}>
           <Drawer
               anchor="right"
@@ -120,9 +123,6 @@ export class Dashboard extends React.Component<Props, State> {
               <WidgetList actions={false}/>
             </Drawer>
         </ClickAwayListener>
-        <DragDropContext
-            onDragEnd={this.onDragEnd}
-        >
           <div className={styles.dashboard}>
             <DashboardItem node={rootNode} contents={this.props.contents} widgets={this.props.widgets} index={0} />
           </div>
