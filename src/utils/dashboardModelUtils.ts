@@ -1,19 +1,8 @@
 import { RootNodeModel, SectionNodeModel, WidgetModel } from '../interfaces/nodeModels';
-import { DashboardContentsModel } from '../interfaces/dashboardModel';
+import { DashboardContentsModel, DashboardModel } from '../interfaces/dashboardModel';
 
 export function removeWidgetFromState(contents: DashboardContentsModel, id: string) {
   // Helper to remove a widget from contents that get passed in
-
-  // Creating a copy of the original object
-  let rootSection = contents.rootSection;
-  let sections = {...contents.sections};
-  let widgets = {...contents.widgets};
-
-  let new_contents = {
-    rootSection: rootSection,
-    sections: sections,
-    widgets: widgets
-  };
 
   // This is composed of 2 Steps:
   /*
@@ -28,21 +17,19 @@ export function removeWidgetFromState(contents: DashboardContentsModel, id: stri
         - Remove the Widget from the Widgets list
   */
 
-  let section = new_contents.widgets[id].parentId;
+  let section = contents.widgets[id].parentId;
   // Call helper to remove the child from the section and redistribute
   // sizing amongst the remaining children
-  new_contents = removeChildAndReDistributeSizing(new_contents, section, id);
+  // contents = removeChildAndReDistributeSizing(contents, section, id);
 
   // IF remaining children is 0 or 1 we have to do some extra stuff
   // This will be handled by the 'removeSection' function
-  if(new_contents.sections[section].children.length <= 1) {
-    new_contents = removeSection(new_contents, new_contents.widgets[id].parentId);
+  if(contents.sections[section].children.length <= 1) {
+    removeSection(contents, contents.widgets[id].parentId);
   }
 
   // Finally remove the widget
-  delete new_contents.widgets[id];
-
-  return new_contents;
+  delete contents.widgets[id];
 }
 
 export function moveWidget(
@@ -53,21 +40,15 @@ export function moveWidget(
   destinationContainerId: string,
   widgetId: string
 ) {
-  let rootSection = contents.rootSection;
-  let sections = {...contents.sections};
-  let widgets = {...contents.widgets};
-  let newContents : DashboardContentsModel = {rootSection, sections, widgets};
-
-  newContents = removeChildAndReDistributeSizing(newContents, sourceContainerId, widgetId);
-  newContents = addWidgetToState(newContents, destinationContainerId, widgetId, destinationIndex)
+  removeChildAndReDistributeSizing(contents.sections, sourceContainerId, widgetId)
+  addWidgetToState(contents, destinationContainerId, widgetId, destinationIndex)
 
   // IF remaining children is 0 or 1 we have to do some extra stuff
   // This will be handled by the 'removeSection' function
-  if (sections[sourceContainerId].children.length <= 1) {
-    newContents = removeSection(newContents, sourceContainerId);
+  if (contents.sections[sourceContainerId].children.length <= 1) {
+    removeSection(contents, sourceContainerId);
   }
-
-  return newContents;
+  // return newState;
 }
 
 function removeSection(contents: DashboardContentsModel, id: string) {
@@ -83,25 +64,23 @@ function removeSection(contents: DashboardContentsModel, id: string) {
 
   // Base case
   if(id == 'root') {
-    return contents;
+    return;
   }
 
   if(contents.sections[id].children.length == 0) {
-
     // Call helper to remove the child from the section and redistribute
     // sizing amongst the remaining children
-    contents = removeChildAndReDistributeSizing(contents, contents.sections[id].parentId, id);
+    // contents = removeChildAndReDistributeSizing(contents, contents.sections[id].parentId, id);
 
     // Recurse if we aren't at the top level
     if(contents.sections[id].parentId != 'root') {
-        contents = removeSection(contents, contents.sections[id].parentId)
+        removeSection(contents, contents.sections[id].parentId)
     }
 
     // Remove the section completely
     delete contents.sections[id];
 
   } else if(contents.sections[id].children.length == 1) {
-
     // Take current section's one child and put it into the section's parent section
     let parentId = contents.sections[id].parentId;
     let currentSectionIndex = contents.sections[parentId].children.indexOf(id);
@@ -120,11 +99,15 @@ function removeSection(contents: DashboardContentsModel, id: string) {
     // Remove the section completely
     delete contents.sections[id];
   }
-
-  return contents;
 }
 
-function removeChildAndReDistributeSizing(contents: DashboardContentsModel, section: string, id: string) {
+function removeChildAndReDistributeSizing(
+  sections: {
+    [key: string] : SectionNodeModel;
+  },
+  section: string,
+  id: string
+  ) {
   // This function gets the index of the child in it's parent section
   // It removes the child from the parent section
   // It gets the current relative sizing of the child
@@ -133,42 +116,35 @@ function removeChildAndReDistributeSizing(contents: DashboardContentsModel, sect
   // This then gets added to the rest of the children
 
   // Getting the location of the current child
-  let childIndex = contents.sections[section].children.indexOf(id);
+  let childIndex = sections[section].children.indexOf(id);
 
   // Remove the child from the section
-  contents.sections[section].children = contents.sections[section].children.filter((value) => value != id);
+  sections[section].children = sections[section].children.filter((value) => value != id);
 
-  // Get the relative sizing of the child that has been removed
-  let childRelativeSize = contents.sections[section].relativeSize[childIndex];
+  // // Get the relative sizing of the child that has been removed
+  let childRelativeSize = sections[section].relativeSize[childIndex];
 
-  // Calculate the amount to distribute to the remaining children
-  let sizeToAllocateToRemainingChildren = childRelativeSize/contents.sections[section].children.length;
-  // Remove the relative sizing entry of the child
-  contents.sections[section].relativeSize.splice(childIndex, 1);
+  // // Calculate the amount to distribute to the remaining children
+  let sizeToAllocateToRemainingChildren = childRelativeSize/sections[section].children.length;
+  // // Remove the relative sizing entry of the child
+  sections[section].relativeSize.splice(childIndex, 1);
 
-  // Distribute remaining space to the remaining children
-  for (let i = 0; i < contents.sections[section].relativeSize.length; i++) {
-      contents.sections[section].relativeSize[i] += sizeToAllocateToRemainingChildren;
+  // // Distribute remaining space to the remaining children
+  for (let i = 0; i < sections[section].relativeSize.length; i++) {
+      sections[section].relativeSize[i] += sizeToAllocateToRemainingChildren;
   }
-
-  return contents;
 }
 
-export function addWidgetToState(contents: any, parentId: string, widgetId: string, index: number) {
+export function addWidgetToState(contents: DashboardContentsModel, parentId: string, widgetId: string, index: number) {
   // Current this handles adding an existing widget to an existing section
   // TODO: handle other possibilities?
 
-  let rootSection = contents.rootSection;
-  let sections = {...contents.sections};
-  let widgets = {...contents.widgets};
-  let newContents : DashboardContentsModel = {rootSection, sections, widgets};
-
+  let sections = contents.sections;
   let section = sections[parentId];
-  let widget = widgets[widgetId];
 
-  // Add widget to section list children at specified position
+  // // Add widget to section list children at specified position
   section.children.splice(index, 0, widgetId);
-  // Initialize relative size value to 0
+  // // Initialize relative size value to 0
   section.relativeSize.splice(index, 0, 1/section.children.length);
 
   // Make space proportionally for the new widget
@@ -177,6 +153,4 @@ export function addWidgetToState(contents: any, parentId: string, widgetId: stri
       section.relativeSize[i] = section.relativeSize[i] * (1 - (1/section.children.length));
     }
   }
-
-  return newContents;
 }
