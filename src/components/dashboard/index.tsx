@@ -33,7 +33,7 @@ export class Dashboard extends React.Component<Props, State> {
     this.toggleWidgetList = this.toggleWidgetList.bind(this);
     this.closeWidgetList = this.closeWidgetList.bind(this);
     this.state = {
-      widgetListOpen: true
+      widgetListOpen: false
     };
   }
 
@@ -120,7 +120,7 @@ export class Dashboard extends React.Component<Props, State> {
                   <ChevronRightIcon/>
                 </IconButton>
               </div>
-              <WidgetList actions={false}/>
+              <WidgetList actions={[]}/>
             </Drawer>
         </ClickAwayListener>
           <div className={styles.dashboard}>
