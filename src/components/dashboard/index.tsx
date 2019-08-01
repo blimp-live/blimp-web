@@ -1,4 +1,5 @@
 import * as React from "react";
+import Button from '@material-ui/core/Button';
 import styles from "./dashboard.module.css"
 import { DashboardItem } from "./dashboardItem";
 import { DashboardContentsModel } from "../../interfaces/dashboardModel";
@@ -57,16 +58,30 @@ export class Dashboard extends React.Component<Props> {
     );
   }
 
+  loadDashboard = () => {
+    this.props.actions.loadDashboard(0);
+  };
+
+  saveDashboard = () => {
+    this.props.actions.saveDashboard(0);
+  };
+
   render(){
     const rootNode = this.props.contents.sections[this.props.contents.rootSection] || this.props.contents.widgets[this.props.contents.rootSection]
     return (
-      <DragDropContext
-          onDragEnd={this.onDragEnd}
-      >
-        <div className={styles.dashboard}>
-          <DashboardItem node={rootNode} contents={this.props.contents} widgets={this.props.widgets} index={0} />
+      <div>
+        <div className={styles.headerButtons}>
+          <Button variant="contained" className={styles.saveButton} onClick={() => this.saveDashboard()}>Save</Button>
+          <Button variant="contained" className={styles.loadButton} onClick={() => this.loadDashboard()}>Load</Button>
         </div>
-      </DragDropContext>
+        <DragDropContext
+            onDragEnd={this.onDragEnd}
+        >
+          <div className={styles.dashboard}>
+            <DashboardItem node={rootNode} contents={this.props.contents} widgets={this.props.widgets} index={0} />
+          </div>
+        </DragDropContext>
+      </div>
     );
   }
 }
