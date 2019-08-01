@@ -6,6 +6,7 @@ import OptionsModal from '../dashboard/optionsModal';
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState } from "../../reducers";
+import * as dashboardActions from "../../actions/dashboardActions";
 
 interface WidgetProps {
   key: string;
@@ -13,6 +14,7 @@ interface WidgetProps {
   index: number;
   data: WidgetModel;
   style?: React.CSSProperties;
+  actions: any;
 }
 
 interface WidgetState {
@@ -39,6 +41,10 @@ class Widget extends React.Component<WidgetProps, WidgetState> {
     });
   };
 
+  removeWidget = () => {
+    this.props.actions.removeWidget(this.props.data.id)
+  };
+
   generateWidget() {
     const WidgetComponent = this.props.widgetComponent;
     return (
@@ -59,8 +65,12 @@ class Widget extends React.Component<WidgetProps, WidgetState> {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
             >
-              <button className={styles.optionsButton} onClick={this.handleClickOpen}>...</button>
-              <OptionsModal open={this.state.modalOpen} onClose={this.handleClose} propTypesList={this.props.widgetComponent.propTypes} widgetId={this.props.data.id} />
+              <div
+                className={styles.innerContainer}>
+                <OptionsModal open={this.state.modalOpen} onClose={this.handleClose} propTypesList={this.props.widgetComponent.propTypes} widgetId={this.props.data.id} />
+                <button className={styles.optionsButton} onClick={this.handleClickOpen}>...</button>
+                <button className={styles.removeButton} onClick={this.removeWidget}>x</button>
+              </div>
               <WidgetComponent {...this.props.data.options} />
             </div>
           )}}
@@ -82,7 +92,7 @@ class Widget extends React.Component<WidgetProps, WidgetState> {
   }
 }
 
-const actions: any = Object.assign({}, null);
+const actions: any = Object.assign({}, dashboardActions);
 
 function mapStateToProps(state: RootState) {
   return {};
