@@ -96,6 +96,14 @@ export class Dashboard extends React.Component<Props, State> {
   saveDashboard = () => {
     this.props.actions.saveDashboard(0);
   };
+  
+  undo = () => {
+    this.props.actions.undo();
+  };
+
+  redo = () => {
+    this.props.actions.redo();
+  };
 
   render(){
     const rootNode = this.props.contents.sections[this.props.contents.rootSection] || this.props.contents.widgets[this.props.contents.rootSection]
@@ -104,6 +112,8 @@ export class Dashboard extends React.Component<Props, State> {
         <div className={styles.headerButtons}>
           <Button variant="contained" className={styles.saveButton} onClick={() => this.saveDashboard()}>Save</Button>
           <Button variant="contained" className={styles.loadButton} onClick={() => this.loadDashboard()}>Load</Button>
+          <Button variant="contained" className={styles.undoButton} onClick={() => this.undo()}>Undo</Button>
+          <Button variant="contained" className={styles.redoButton} onClick={() => this.redo()}>Redo</Button>
           <Fab onMouseEnter={this.toggleWidgetList}><MenuIcon/></Fab>
         </div>
         <DragDropContext

@@ -188,13 +188,13 @@ export function editWidget(options: any, widgetId: string) {
   }
 }
 
-function undo() {
+export function undo() {
   return {
     type: UNDO,
   }
 }
 
-function redo() {
+export function redo() {
   return {
     type: REDO,
   }
