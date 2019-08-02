@@ -12,6 +12,7 @@
     position: absolute;
     width: calc(100% - 20px);
     height: calc(100% - 20px);
+    z-index: -1;
 }
 
 .optionsButton {
