@@ -94,6 +94,7 @@ export class Dashboard extends React.Component<Props, State> {
   };
 
   saveDashboard = (id, name, contents) => {
+    // console.log(contents);
     this.props.actions.saveDashboard(id, name, contents);
   };
 
