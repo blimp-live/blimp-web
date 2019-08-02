@@ -79,8 +79,8 @@ export function saveDashboard(id: number, name: String, contents: DashboardModel
 
     fetch(`${root}/dashboard/id/${id}`, {
       method: 'PUT',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: qs.stringify({name: name, contents: contents})
+      headers: {'Content-Type': 'application/json'},
+      body: qs.stringify({name: name, contents: JSON.stringify(contents)})
     }).then(
         (response: any) => response.json()
     ).then(
