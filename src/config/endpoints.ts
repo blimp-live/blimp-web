@@ -1,1 +1,1 @@
-export const root = 'https://blimp-live.herokuapp.com/';
+export const root = 'https://blimp-live.herokuapp.com';
