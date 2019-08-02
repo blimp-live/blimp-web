@@ -33,7 +33,7 @@ export class Dashboard extends React.Component<Props, State> {
     this.toggleWidgetList = this.toggleWidgetList.bind(this);
     this.closeWidgetList = this.closeWidgetList.bind(this);
     this.state = {
-      widgetListOpen: true
+      widgetListOpen: false
     };
   }
 
@@ -96,7 +96,7 @@ export class Dashboard extends React.Component<Props, State> {
   saveDashboard = () => {
     this.props.actions.saveDashboard(0);
   };
-  
+
   undo = () => {
     this.props.actions.undo();
   };
