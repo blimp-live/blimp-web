@@ -112,7 +112,6 @@ export class Dashboard extends React.Component<Props, State> {
     <div>
         <div className={styles.headerButtons}>
           <Button variant="contained" className={styles.saveButton} onClick={() => this.saveDashboard(0, "Bhavika", this.props.contents)}>Save</Button>
-          <Button variant="contained" className={styles.loadButton} onClick={() => this.loadDashboard(0)}>Load</Button>
           <Button variant="contained" className={styles.undoButton} onClick={() => this.undo()}>Undo</Button>
           <Button variant="contained" className={styles.redoButton} onClick={() => this.redo()}>Redo</Button>
           <Fab onMouseEnter={this.toggleWidgetList}><MenuIcon/></Fab>
