@@ -13,10 +13,15 @@ import DashboardView from './containers/dashboard-view'
 // Actions
 import { viewDashboard } from './actions/viewStateActions'
 
+const indexRedirect = () => window.location.reload();
+
 export const App = (): JSX.Element => {
   return (
     <React.Fragment>
-      <Route exact path="/" component={MarketingPage} />
+      <Route exact path="/" component={() => { 
+        window.location.href = 'about.html'; 
+        return null;
+      }}/>
       <Route exact path="/calculator-example/" component={Calculator} />
       <Route exact path="/developer" component={DeveloperPage} />
       <Route exact path="/midterm" component={OldDashboard} />
