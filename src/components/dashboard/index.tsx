@@ -93,8 +93,10 @@ export class Dashboard extends React.Component<Props, State> {
     this.props.actions.loadDashboard(0);
   };
 
-  saveDashboard = () => {
-    this.props.actions.saveDashboard(0);
+
+  saveDashboard = (id, name, contents) => {
+    // console.log(contents);
+    this.props.actions.saveDashboard(id, name, contents);
   };
 
   undo = () => {
@@ -110,8 +112,9 @@ export class Dashboard extends React.Component<Props, State> {
     return (
     <div>
         <div className={styles.headerButtons}>
-          {/*<Button variant="contained" className={styles.saveButton} onClick={() => this.saveDashboard()}>Save</Button>
+          {/*
           <Button variant="contained" className={styles.loadButton} onClick={() => this.loadDashboard()}>Load</Button>
+          <Button variant="contained" className={styles.saveButton} onClick={() => this.saveDashboard(0, "Bhavika", this.props.contents)}>Save</Button>
           <Button variant="contained" className={styles.undoButton} onClick={() => this.undo()}>Undo</Button>
           <Button variant="contained" className={styles.redoButton} onClick={() => this.redo()}>Redo</Button>
     <Fab onMouseEnter={this.toggleWidgetList}><MenuIcon/></Fab>*/}

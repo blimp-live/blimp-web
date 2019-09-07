@@ -2,7 +2,8 @@ import { DashboardModel, DashboardContentsModel } from '../interfaces/dashboardM
 import { WidgetModel } from '../interfaces/nodeModels';
 import { root } from '../config/endpoints';
 
-const querystring = require('querystring');
+// const querystring = require('querystring');
+const qs = require('qs');
 
 const sampleContents : DashboardContentsModel = {
   sections: {},
@@ -78,8 +79,8 @@ export function saveDashboard(id: number, name: String, contents: DashboardModel
 
     fetch(`${root}/dashboard/id/${id}`, {
       method: 'PUT',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: querystring.stringify({name: name, contents: contents})
+      headers: {'Content-Type': 'application/json'},
+      body: qs.stringify({name: name, contents: contents})
     }).then(
         (response: any) => response.json()
     ).then(
@@ -166,7 +167,7 @@ export function createDashboard(name: String, userId: number) {
     fetch(`${root}/dashboard`, {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: querystring.stringify({name: name, userid: userId})
+      body: qs.stringify({name: name, userid: userId})
     }).then(
       (response: any) => response.json()
     ).then(

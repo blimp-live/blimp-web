@@ -20,7 +20,7 @@ export const App = (): JSX.Element => {
       <Route exact path="/calculator-example/" component={Calculator} />
       <Route exact path="/developer" component={DeveloperPage} />
       <Route exact path="/midterm" component={OldDashboard} />
-      <Route exact path="/dashboard-view" component={DashboardView} />
+      <Route exact path="/hackthenorth" component={DashboardView} />
     </React.Fragment>
   )
 }
