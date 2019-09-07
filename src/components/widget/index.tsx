@@ -69,8 +69,8 @@ class Widget extends React.Component<WidgetProps, WidgetState> {
               <div
                 className={styles.innerContainer}>
                 <OptionsModal open={this.state.modalOpen} onClose={this.handleClose} propTypesList={this.props.widgetComponent.propTypes} widgetId={this.props.data.id} />
-                <button className={styles.optionsButton} onClick={this.handleClickOpen}>...</button>
-                <button className={styles.removeButton} onClick={this.removeWidget}>x</button>
+                {/*<button className={styles.optionsButton} onClick={this.handleClickOpen}>...</button>
+                <button className={styles.removeButton} onClick={this.removeWidget}>x</button>*/}
               </div>
               <WidgetComponent {...this.props.data.options} />
             </div>

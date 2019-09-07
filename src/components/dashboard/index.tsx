@@ -89,12 +89,12 @@ export class Dashboard extends React.Component<Props, State> {
     );
   }
 
-  loadDashboard = (id) => {
-    this.props.actions.loadDashboard(id);
+  loadDashboard = () => {
+    this.props.actions.loadDashboard(0);
   };
 
-  saveDashboard = (id, name, contents) => {
-    this.props.actions.saveDashboard(id, name, contents);
+  saveDashboard = () => {
+    this.props.actions.saveDashboard(0);
   };
 
   undo = () => {
@@ -110,11 +110,11 @@ export class Dashboard extends React.Component<Props, State> {
     return (
     <div>
         <div className={styles.headerButtons}>
-          <Button variant="contained" className={styles.saveButton} onClick={() => this.saveDashboard(0, "Bhavika", this.props.contents)}>Save</Button>
-          <Button variant="contained" className={styles.loadButton} onClick={() => this.loadDashboard(0)}>Load</Button>
+          {/*<Button variant="contained" className={styles.saveButton} onClick={() => this.saveDashboard()}>Save</Button>
+          <Button variant="contained" className={styles.loadButton} onClick={() => this.loadDashboard()}>Load</Button>
           <Button variant="contained" className={styles.undoButton} onClick={() => this.undo()}>Undo</Button>
           <Button variant="contained" className={styles.redoButton} onClick={() => this.redo()}>Redo</Button>
-          <Fab onMouseEnter={this.toggleWidgetList}><MenuIcon/></Fab>
+    <Fab onMouseEnter={this.toggleWidgetList}><MenuIcon/></Fab>*/}
         </div>
         <DragDropContext
             onDragEnd={this.onDragEnd}
