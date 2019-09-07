@@ -18,8 +18,8 @@ const indexRedirect = () => window.location.reload();
 export const App = (): JSX.Element => {
   return (
     <React.Fragment>
-      <Route exact path="/" component={() => { 
-        window.location.href = 'about.html'; 
+      <Route exact path="/" component={() => {
+        window.location.href = 'about.html';
         return null;
       }}/>
       <Route exact path="/calculator-example/" component={Calculator} />
