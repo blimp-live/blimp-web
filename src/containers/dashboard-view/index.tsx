@@ -10,6 +10,7 @@ export default class DashboardView extends React.Component<Props> {
   render() {
     return (
       <div>
+        <title>Hack The North</title>
         <Dashboard />
       </div>
     );
