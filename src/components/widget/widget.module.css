@@ -1,8 +1,4 @@
 .container {
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 2.5px;
   box-sizing: border-box;
   transition: height 0.1s ease, width 0.1s ease;
   position:relative;
@@ -10,8 +6,8 @@
 
 .innerContainer {
     position: absolute;
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
+    width: calc(100%);
+    height: calc(100%);
 }
 
 .optionsButton {
