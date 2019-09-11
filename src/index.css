@@ -13,3 +13,92 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*
+ * Castledown Web Fonts from colophon-foundry.org
+ *
+ * The fonts included in this stylesheet are subject to the End User License purchased
+ * from Colophon Foundry. The fonts are protected under domestic and international trademark and
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2019 Colophon Foundry
+ *
+ * Licenced to Stanley Huang, Techyon
+ */
+ @font-face {
+  font-family: 'Mont';
+  src: url(/Mont.woff); }
+
+@font-face {
+  font-family: "Castledown";
+  src: url(/fonts/castledown-heavy.eot);
+  src: url(/fonts/castledown-heavy.eot#iefix) format("embedded-opentype"), url(/fonts/castledown-heavy.woff2) format("woff2"), url(/fonts/castledown-heavy.woff) format("woff"), url(/fonts/castledown-heavy.eot) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/Inter-Regular.woff2) format("woff2"), url(/fonts/Inter-Regular.woff) format("woff"); }
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url(/fonts/Inter-Medium.woff2) format("woff2"), url(/fonts/Inter-Medium.woff) format("woff"); }
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/Inter-Bold.woff2) format("woff2"), url(/fonts/Inter-Bold.woff) format("woff"); }
+
+/*
+ * Castledown Web Fonts from colophon-foundry.org
+ *
+ * The fonts included in this stylesheet are subject to the End User License purchased
+ * from Colophon Foundry. The fonts are protected under domestic and international trademark and
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2019 Colophon Foundry
+ *
+ * Licenced to Stanley Huang, Techyon
+ */
+@font-face {
+  font-family: 'Mont';
+  src: url(/Mont.woff); }
+
+@font-face {
+  font-family: "Castledown";
+  src: url(/fonts/castledown-heavy.eot);
+  src: url(/fonts/castledown-heavy.eot#iefix) format("embedded-opentype"), url(/fonts/castledown-heavy.woff2) format("woff2"), url(/fonts/castledown-heavy.woff) format("woff"), url(/fonts/castledown-heavy.eot) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/Inter-Regular.woff2) format("woff2"), url(/fonts/Inter-Regular.woff) format("woff"); }
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url(/fonts/Inter-Medium.woff2) format("woff2"), url(/fonts/Inter-Medium.woff) format("woff"); }
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/Inter-Bold.woff2) format("woff2"), url(/fonts/Inter-Bold.woff) format("woff"); }
+
+body {
+  background-color: #EFF8FA; }
+
+* {
+  font-family: Inter, sans-serif;
+  color: #183249; }
