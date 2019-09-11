@@ -10,6 +10,14 @@
   z-index: 999;
 }
 
+.branding {
+  content:url('assets/branding.svg');
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 999;
+}
+
 /* .saveButton {
   position: absolute !important;
   top: 10px;

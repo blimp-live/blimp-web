@@ -119,6 +119,7 @@ export class Dashboard extends React.Component<Props, State> {
           <Button variant="contained" className={styles.redoButton} onClick={() => this.redo()}>Redo</Button>
     <Fab onMouseEnter={this.toggleWidgetList}><MenuIcon/></Fab>*/}
         </div>
+        <div className={styles.branding} ></div>
         <DragDropContext
             onDragEnd={this.onDragEnd}
         >
