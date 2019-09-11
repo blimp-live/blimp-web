@@ -37,7 +37,7 @@ const widgets = {
   } as WidgetModel,
   'logo': {
     id: 'logo',
-    widgetType: 'Countdown',
+    widgetType: 'Gallery',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -45,7 +45,7 @@ const widgets = {
   } as WidgetModel,
   'weather': {
     id: 'weather',
-    widgetType: 'ExampleComponent',
+    widgetType: 'Weather',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -53,7 +53,7 @@ const widgets = {
   } as WidgetModel,
   'clock': {
     id: 'clock',
-    widgetType: 'HelloWorld',
+    widgetType: 'Clock',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -61,7 +61,7 @@ const widgets = {
   } as WidgetModel,
   'countdown': {
     id: 'countdown',
-    widgetType: 'IFrameComponent',
+    widgetType: 'Countdown',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -69,7 +69,7 @@ const widgets = {
   } as WidgetModel,
   'wayfinding': {
     id: 'wayfinding',
-    widgetType: 'ScrollingText',
+    widgetType: 'Gallery',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -77,7 +77,7 @@ const widgets = {
   } as WidgetModel,
   'social': {
     id: 'social',
-    widgetType: 'Clock',
+    widgetType: 'Countdown',
     options: null,
     version: 1.0,
     type: 'WidgetModel',

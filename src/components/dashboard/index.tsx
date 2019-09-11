@@ -122,7 +122,7 @@ export class Dashboard extends React.Component<Props, State> {
         <DragDropContext
             onDragEnd={this.onDragEnd}
         >
-        <ClickAwayListener onClickAway={this.closeWidgetList}>
+        { /*<ClickAwayListener onClickAway={this.closeWidgetList}>
           <Drawer
               anchor="right"
               variant="persistent"
@@ -135,7 +135,7 @@ export class Dashboard extends React.Component<Props, State> {
               </div>
               <WidgetList actions={false}/>
             </Drawer>
-        </ClickAwayListener>
+        </ClickAwayListener> */ }
           <div className={styles.dashboard}>
             <DashboardItem node={rootNode} contents={this.props.contents} widgets={this.props.widgets} index={0} />
           </div>
