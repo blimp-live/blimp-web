@@ -49,7 +49,7 @@ class Widget extends React.Component<WidgetProps, WidgetState> {
   generateWidget() {
     const WidgetComponent = this.props.widgetComponent;
     return (
-      <Draggable draggableId={this.props.data.id} index={this.props.index}>
+      <Draggable isDragDisabled={true} draggableId={this.props.data.id} index={this.props.index}>
         {(provided: any, snapshot) => {
           // While dragging, change the size
           if (snapshot.isDragging) {

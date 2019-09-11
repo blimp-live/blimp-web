@@ -31,7 +31,7 @@ class WidgetContainer extends React.Component<WidgetContainerProps> {
   render() {
     return (
       <div ref={this.refCallback}>
-        <Draggable draggableId={this.props.widgetID} index={this.props.index}>
+        <Draggable isDragDisabled={true} draggableId={this.props.widgetID} index={this.props.index}>
           {(provided: any, snapshot) => (
             <div
               className='container'
