@@ -21,7 +21,7 @@ import {
 const widgets = {
   'live-feed': {
     id: 'live-feed',
-    widgetType: 'ScrollingText',
+    widgetType: 'IFrameComponent',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -37,7 +37,7 @@ const widgets = {
   } as WidgetModel,
   'logo': {
     id: 'logo',
-    widgetType: 'Gallery',
+    widgetType: 'Logo',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -49,7 +49,7 @@ const widgets = {
     options: null,
     version: 1.0,
     type: 'WidgetModel',
-    parentId: 'top-right-infobar-right'
+    parentId: 'weather-countdown'
   } as WidgetModel,
   'clock': {
     id: 'clock',
@@ -57,7 +57,7 @@ const widgets = {
     options: null,
     version: 1.0,
     type: 'WidgetModel',
-    parentId: 'top-right-infobar-left'
+    parentId: 'time'
   } as WidgetModel,
   'countdown': {
     id: 'countdown',
@@ -65,7 +65,7 @@ const widgets = {
     options: null,
     version: 1.0,
     type: 'WidgetModel',
-    parentId: 'top-right-infobar-right'
+    parentId: 'weather-countdown'
   } as WidgetModel,
   'wayfinding': {
     id: 'wayfinding',
@@ -77,19 +77,19 @@ const widgets = {
   } as WidgetModel,
   'social': {
     id: 'social',
-    widgetType: 'Countdown',
+    widgetType: 'TwitterComponent',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
     parentId: 'bottom-right'
   } as WidgetModel,
-  'bottom': {
-    id: 'bottom',
-    widgetType: 'Countdown',
+  'date': {
+    id: 'date',
+    widgetType: 'DateComponent',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
-    parentId: 'bottom-right'
+    parentId: 'time'
   } as WidgetModel,
 }
 
@@ -112,9 +112,9 @@ const sections = {
   'right' : {
     id: 'right',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.5, 0.5],
+    relativeSize: [0.3, 0.3, 0.3],
     type: 'SectionModel',
-    children: ['top-right', 'bottom-right'],
+    children: ['top-right', 'middle-right', 'bottom-right'],
     parentId: 'root',
   } as SectionNodeModel,
   'top-right' : {
@@ -122,39 +122,71 @@ const sections = {
     sectionDivision: 'HORIZONTAL',
     relativeSize: [0.2, 0.8],
     type: 'SectionModel',
-    children: ['top-right-infobar', 'wayfinding'],
+    children: ['top-right-logo', 'top-right-infobar-utilities'],
     parentId: 'right',
   } as SectionNodeModel,
-  'top-right-infobar' : {
-    id: 'top-right-infobar',
+  'top-right-logo' : {
+    id: 'top-right-logo',
+    sectionDivision: 'VERTICAL',
+    relativeSize: [1.0],
+    type: 'SectionModel',
+    children: ['logo'],
+    parentId: 'top-right',
+  } as SectionNodeModel,
+  'top-right-infobar-utilities' : {
+    id: 'top-right-infobar-utilities',
     sectionDivision: 'VERTICAL',
     relativeSize: [0.5, 0.5],
     type: 'SectionModel',
-    children: ['top-right-infobar-left', 'top-right-infobar-right'],
+    children: ['time', 'weather-countdown'],
     parentId: 'top-right',
   } as SectionNodeModel,
-  'bottom-right' : {
+  'weather-countdown' : {
+    id: 'weather-countdown',
+    sectionDivision: 'HORIZONTAL',
+    relativeSize: [0.5, 0.5],
+    type: 'SectionModel',
+    children: ['weather', 'countdown'],
+    parentId: 'top-right-infobar-utilities',
+  } as SectionNodeModel,
+  'time' : {
+    id: 'time',
+    sectionDivision: 'HORIZONTAL',
+    relativeSize: [0.5, 0.5],
+    type: 'SectionModel',
+    children: ['clock', 'date'],
+    parentId: 'top-right-infobar-utilities',
+  } as SectionNodeModel,
+  'middle-right' : {
     id: 'bottom-right',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.85, 0.15],
+    relativeSize: [1.0],
     type: 'SectionModel',
-    children: ['social', 'bottom'],
+    children: ['wayfinding'],
+    parentId: 'right',
+  } as SectionNodeModel,
+  'bottom-right': {
+    id: 'bottom-right',
+    sectionDivision: 'HORIZONTAL',
+    relativeSize: [1.0],
+    type: 'SectionModel',
+    children: ['social'],
     parentId: 'right',
   } as SectionNodeModel,
   'top-right-infobar-left' : {
     id: 'top-right-infobar-left',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.5, 0.5],
+    relativeSize: [0.5],
     type: 'SectionModel',
-    children: ['logo', 'clock'],
+    children: ['logo'],
     parentId: 'top-right-infobar',
   } as SectionNodeModel,
   'top-right-infobar-right' : {
     id: 'top-right-infobar-right',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.5, 0.5],
+    relativeSize: [],
     type: 'SectionModel',
-    children: ['weather', 'countdown'],
+    children: [],
     parentId: 'top-right-infobar',
   } as SectionNodeModel,
 }
