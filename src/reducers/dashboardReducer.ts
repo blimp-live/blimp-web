@@ -21,7 +21,7 @@ import {
 const widgets = {
   'live-feed': {
     id: 'live-feed',
-    widgetType: 'IFrameComponent',
+    widgetType: 'ScrollingText',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
