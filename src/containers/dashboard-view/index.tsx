@@ -49,6 +49,7 @@ export default class DashboardView extends React.Component<Props, State> {
   render() {
     return (
       <div>
+        <title>Hack The North</title>
         <Dashboard />
       </div>
     );
