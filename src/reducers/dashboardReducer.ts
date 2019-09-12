@@ -29,7 +29,7 @@ const widgets = {
   } as WidgetModel,
   'schedule': {
     id: 'schedule',
-    widgetType: 'ScrollingText',
+    widgetType: 'Schedule',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
