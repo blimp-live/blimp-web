@@ -59,6 +59,13 @@ class Widget extends React.Component<WidgetProps, WidgetState> {
             provided.draggableProps.style = {...provided.draggableProps.style, ...this.props.style}
           }
 
+          // <div
+          //   className={styles.innerContainer}>
+          //   <OptionsModal open={this.state.modalOpen} onClose={this.handleClose} propTypesList={this.props.widgetComponent.propTypes} widgetId={this.props.data.id} />
+          //   <button className={styles.optionsButton} onClick={this.handleClickOpen}>...</button>
+          //   <button className={styles.removeButton} onClick={this.removeWidget}>x</button>*/}
+          // </div>
+
           return (
             <div
               className={styles.container}
@@ -66,12 +73,6 @@ class Widget extends React.Component<WidgetProps, WidgetState> {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
             >
-              <div
-                className={styles.innerContainer}>
-                <OptionsModal open={this.state.modalOpen} onClose={this.handleClose} propTypesList={this.props.widgetComponent.propTypes} widgetId={this.props.data.id} />
-                {/*<button className={styles.optionsButton} onClick={this.handleClickOpen}>...</button>
-                <button className={styles.removeButton} onClick={this.removeWidget}>x</button>*/}
-              </div>
               <WidgetComponent {...this.props.data.options} />
             </div>
           )}}

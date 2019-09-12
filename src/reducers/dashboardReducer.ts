@@ -97,14 +97,14 @@ const sections = {
   'root' : {
     id: 'root',
     sectionDivision: 'VERTICAL',
-    relativeSize: [0.5, 0.5],
+    relativeSize: [0.6, 0.4],
     type: 'SectionModel',
     children: ['left', 'right']
   } as SectionNodeModel,
   'left' : {
     id: 'left',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.5, 0.5],
+    relativeSize: [0.60, 0.40],
     type: 'SectionModel',
     children: ['live-feed', 'schedule'],
     parentId: 'root',
@@ -112,15 +112,15 @@ const sections = {
   'right' : {
     id: 'right',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.3, 0.3, 0.3],
+    relativeSize: [0.3, 0.7],
     type: 'SectionModel',
-    children: ['top-right', 'middle-right', 'bottom-right'],
+    children: ['top-right', 'bottom-right'],
     parentId: 'root',
   } as SectionNodeModel,
   'top-right' : {
     id: 'top-right',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.2, 0.8],
+    relativeSize: [0.35, 0.65],
     type: 'SectionModel',
     children: ['top-right-logo', 'top-right-infobar-utilities'],
     parentId: 'right',
