@@ -28,8 +28,8 @@ export class DashboardItem extends React.Component<Props> {
         // When the section is divided horizontally
         // height is constrained, but width takes up 100% of available space
         // vice versa for the vertical case
-        width: sectionDivision == 'HORIZONTAL' ? 'calc(100% - 5px)' : `calc(${relativeSize[i]*100}% - 5px)`,
-        height: sectionDivision == 'VERTICAL' ? 'calc(100% - 5px)' : `calc(${relativeSize[i]*100}% - 5px)`,
+        width: sectionDivision == 'HORIZONTAL' ? 'calc(100%)' : `calc(${relativeSize[i]*100}% 5px)`,
+        height: sectionDivision == 'VERTICAL' ? 'calc(100%)' : `calc(${relativeSize[i]*100}% 5px)`,
         overflow: 'hidden',
       }
 
