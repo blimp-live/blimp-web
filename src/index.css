@@ -102,3 +102,7 @@ body {
 * {
   font-family: Inter, sans-serif;
   color: #183249; }
+
+iframe {
+  border: 0;
+}
