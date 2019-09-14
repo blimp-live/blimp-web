@@ -1,6 +1,6 @@
 {
   "name": "blimp-start",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@atlaskit/css-reset": "^4.0.1",
@@ -13,7 +13,7 @@
     "@types/react-beautiful-dnd": "^11.0.2",
     "@types/react-dom": "16.8.4",
     "@types/styled-components": "^4.1.15",
-    "blimp-live-widgets": "^1.1.0",
+    "blimp-live-widgets": "^1.1.1",
     "core-js": "^3.0.1",
     "core-js-compat": "^3.0.1",
     "cross-fetch": "^3.0.2",
