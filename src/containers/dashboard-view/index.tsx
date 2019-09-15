@@ -25,7 +25,9 @@ export default class DashboardView extends React.Component<Props, State> {
       .then(
         (result) => {
           if (this.state.latestCommitSha && result["sha"] !== this.state.latestCommitSha) {
-            window.location.reload();
+            setInterval(() => {
+              window.location.reload();
+            }, 360000);
           }
           this.setState({
             latestCommitSha: result["sha"],
