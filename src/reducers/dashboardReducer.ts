@@ -21,7 +21,7 @@ import {
 const widgets = {
   'live-feed': {
     id: 'live-feed',
-    widgetType: 'IFrameComponent',
+    widgetType: 'Gallery',
     options: null,
     version: 1.0,
     type: 'WidgetModel',
@@ -112,7 +112,7 @@ const sections = {
   'right' : {
     id: 'right',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.3, 0.7],
+    relativeSize: [0.15, 0.85],
     type: 'SectionModel',
     children: ['top-right', 'bottom-right'],
     parentId: 'root',
@@ -120,7 +120,7 @@ const sections = {
   'top-right' : {
     id: 'top-right',
     sectionDivision: 'HORIZONTAL',
-    relativeSize: [0.35, 0.65],
+    relativeSize: [0.5, 0.5],
     type: 'SectionModel',
     children: ['top-right-logo', 'top-right-infobar-utilities'],
     parentId: 'right',
@@ -146,7 +146,7 @@ const sections = {
     sectionDivision: 'HORIZONTAL',
     relativeSize: [0.5, 0.5],
     type: 'SectionModel',
-    children: ['weather', 'countdown'],
+    children: ['weather'],
     parentId: 'top-right-infobar-utilities',
   } as SectionNodeModel,
   'time' : {
@@ -154,7 +154,7 @@ const sections = {
     sectionDivision: 'HORIZONTAL',
     relativeSize: [0.5, 0.5],
     type: 'SectionModel',
-    children: ['clock', 'date'],
+    children: ['clock'],
     parentId: 'top-right-infobar-utilities',
   } as SectionNodeModel,
   'middle-right' : {
